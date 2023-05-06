@@ -1,15 +1,15 @@
-# ⏬ Installing Synpress
+# Synpress — Web3 E2E testing Framework
 
 
 
-[Synpress](https://github.com/Synthetixio/synpress) is available as an [npm package](https://www.npmjs.com/package/@synthetixio/synpress).&#x20;
+### TODO:&#x20;
 
-```bash
-# with pnpm
-pnpm add --save-dev @synthetixio/synpress
-# with npm
-npm install --save-dev @synthetixio/synpress
-# with yarn
-yarn add -D @synthetixio/synpress
-```
-
+* [ ] Installing Synpress&#x20;
+* [ ] Writing First E2E tests&#x20;
+* [ ] Example with Cypress&#x20;
+* [ ] Example with Playwright&#x20;
+* [ ] Example with Cypress + CI/CD&#x20;
+* [ ] Example with Playwright + CI/CD
+* [ ] Running Synpress from GitHub and GitLab CI/CD&#x20;
+* [ ] Env. variables&#x20;
+* [ ] Full API Reference &#x20;
