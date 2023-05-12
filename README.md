@@ -1,4 +1,8 @@
-# Synpress — Web3 E2E testing Framework
+---
+description: Synpress is dApp E2E testing framework based on Cypress and Playwright.
+---
+
+# Synpress — dApp E2E Testing
 
 
 
