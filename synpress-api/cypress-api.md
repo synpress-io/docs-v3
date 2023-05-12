@@ -43,7 +43,7 @@ function assignActiveTabName(tabName: string): Chainable<boolean>;
 #### Example&#x20;
 
 ```javascript
-cy.assignActiveTabName("my-tab"); 
+cy.assignActiveTabName("my-tab");
 ```
 
 ## **`isMetamaskWindowActive`**
@@ -51,7 +51,7 @@ cy.assignActiveTabName("my-tab");
 Checks if the currently active window is Metamask.
 
 ```typescript
-function isMetamaskWindowActive(): Chainable<boolean>; 
+function isMetamaskWindowActive(): Chainable<boolean>;
 ```
 
 #### Example
@@ -118,20 +118,20 @@ Get current network info&#x20;
 
 ```typescript
 function getNetwork(): Chainable<{
-    networkName: string,
-    networkDisplayName: string, 
-    networkId: number, 
-    isTestnet: boolean,
+  networkName: string;
+  networkDisplayName: string;
+  networkId: number;
+  isTestnet: boolean;
 }>;
 ```
 
 #### Example&#x20;
 
 ```typescript
-cy.getNetwork().then(network => {
-    expect(network.networkName).to.be.equal('sepolia');
-    expect(network.networkId).to.be.equal(11155111);
-    expect(network.isTestnet).to.be.true;
+cy.getNetwork().then((network) => {
+  expect(network.networkName).to.be.equal("sepolia");
+  expect(network.networkId).to.be.equal(11155111);
+  expect(network.isTestnet).to.be.true;
 });
 ```
 
@@ -141,31 +141,31 @@ Add network in MetaMask (and switch to the newly added network).
 
 ```typescript
 function addMetamaskNetwork(network: {
-    networkName: string,
-    rpcUrl: string,
-    chainId: string,
-    symbol?: string,
-    blockExplorer?: string,
-    isTestnet: boolean,
-}): Chainable<boolean>
+  networkName: string;
+  rpcUrl: string;
+  chainId: string;
+  symbol?: string;
+  blockExplorer?: string;
+  isTestnet: boolean;
+}): Chainable<boolean>;
 ```
 
 #### Example&#x20;
 
 ```typescript
 cy.addMetamaskNetwork({
-  networkName: 'Optimism Network',
-  rpcUrl: 'https://mainnet.optimism.io',
-  chainId: '10',
-  symbol: 'OETH',
-  blockExplorer: 'https://optimistic.etherscan.io',
+  networkName: "Optimism Network",
+  rpcUrl: "https://mainnet.optimism.io",
+  chainId: "10",
+  symbol: "OETH",
+  blockExplorer: "https://optimistic.etherscan.io",
   isTestnet: false,
 });
 ```
 
 #### **Preview**
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 9.17.14 AM.png" alt=""><figcaption><p>Add network screen in MetaMask</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/add_network.png" alt=""><figcaption><p>Add network screen in MetaMask</p></figcaption></figure>
 
 ## **`changeMetamaskNetwork`**
 
@@ -182,15 +182,15 @@ If no network is provided, it will default to using the `NETWORK_NAME` environme
 
 ```javascript
 // Pass one of the predefined networks (mainnet, goerli, sepolia , localhost)
-cy.changeMetamaskNetwork('mainnet');
+cy.changeMetamaskNetwork("mainnet");
 // Pass the network name (from the Metamask networks dropdown menu)
-cy.changeMetamaskNetwork('optimism network');
-cy.changeMetamaskNetwork('sepolia');
+cy.changeMetamaskNetwork("optimism network");
+cy.changeMetamaskNetwork("sepolia");
 ```
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 9.21.32 AM.png" alt="Switch network from Metamask"><figcaption><p>Switch network from Metamask</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/switch_network.png" alt="Switch network from Metamask"><figcaption><p>Switch network from Metamask</p></figcaption></figure>
 
 ## **`importMetamaskAccount`**
 
@@ -204,14 +204,14 @@ function importMetamaskAccount(pk: string): Chainable<boolean>;
 
 ```javascript
 cy.importMetamaskAccount(
-  '0x2a871d0798f97d79848a013d4936a73bf4cc922c825d33c1cf7073dff6d409c6',
+  "0x2a871d0798f97d79848a013d4936a73bf4cc922c825d33c1cf7073dff6d409c6"
 );
-cy.importMetamaskAccount(Cypress.env('PRIVATE_KEY_WITH_FUNDS'));
+cy.importMetamaskAccount(Cypress.env("PRIVATE_KEY_WITH_FUNDS"));
 ```
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 9.22.44 AM.png" alt="Import account using private key"><figcaption><p>Import account using private key in Metamask</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/import_account.png" alt="Import account using private key"><figcaption><p>Import account using private key in Metamask</p></figcaption></figure>
 
 ## **`createMetamaskAccount`**
 
@@ -224,33 +224,33 @@ function createMetamaskAccount(accountName?: string): Chainable<boolean>;
 ```typescript
 // Create a new account with the default name
 cy.createMetamaskAccount();
-cy.createMetamaskAccount('custom-wallet');
+cy.createMetamaskAccount("custom-wallet");
 ```
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 9.23.27 AM.png" alt="Create new account in Metamask"><figcaption><p>Create new account in Metamask</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/create_account.png" alt="Create new account in Metamask"><figcaption><p>Create new account in Metamask</p></figcaption></figure>
 
 ## **`switchMetamaskAccount`**
 
 ```typescript
 function switchMetamaskAccount(
-  accountNameOrAccountNumber: string | number,
+  accountNameOrAccountNumber: string | number
 ): Chainable<boolean>;
 ```
 
 #### Example&#x20;
 
 ```typescript
- // Switch using the account number
- cy.switchMetamaskAccount(2);
- // Switch using the account name
- cy.switchMetamaskAccount('account 1')
+// Switch using the account number
+cy.switchMetamaskAccount(2);
+// Switch using the account name
+cy.switchMetamaskAccount("account 1");
 ```
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 9.26.00 AM.png" alt="Switch account from Metamask"><figcaption><p>Switch account from Metamask</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/switch_account.png" alt="Switch account from Metamask"><figcaption><p>Switch account from Metamask</p></figcaption></figure>
 
 ## **`getMetamaskWalletAddress`**
 
@@ -263,10 +263,8 @@ function getMetamaskWalletAddress(): Chainable<string>;
 #### Example&#x20;
 
 ```typescript
-cy.getMetamaskWalletAddress().then(address => {
-  expect(address).to.be.equal(
-    '0x70997970C51812dc3A010C7d01b50e0d17dc79C8',
-  );
+cy.getMetamaskWalletAddress().then((address) => {
+  expect(address).to.be.equal("0x70997970C51812dc3A010C7d01b50e0d17dc79C8");
 });
 ```
 
@@ -280,7 +278,7 @@ function disconnectMetamaskWalletFromDapp(): Chainable<boolean>;
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 9.28.55 AM.png" alt="Disconnect dApp from Metamask"><figcaption><p>Disconnect dApp from Metamask</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/disconnect_dapp.png" alt="Disconnect dApp from Metamask"><figcaption><p>Disconnect dApp from Metamask</p></figcaption></figure>
 
 ## **`disconnectMetamaskWalletFromAllDapps`**
 
@@ -292,7 +290,7 @@ function disconnectMetamaskWalletFromAllDapps(): Chainable<boolean>;
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 9.27.40 AM.png" alt="Disconnect dApp from Metamask"><figcaption><p>Disconnect dApps from Metamask</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/disconnect_all_dapps.png" alt="Disconnect dApp from Metamask"><figcaption><p>Disconnect dApps from Metamask</p></figcaption></figure>
 
 ## **`confirmMetamaskSignatureRequest`**
 
@@ -304,7 +302,7 @@ function confirmMetamaskSignatureRequest(): Chainable<boolean>;
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 9.31.32 AM.png" alt="Confirm signature request in Metamask"><figcaption><p>Confirm signature request in Metamask</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/accept_sig_req.png" alt="Confirm signature request in Metamask"><figcaption><p>Confirm signature request in Metamask</p></figcaption></figure>
 
 ## **`confirmMetamaskDataSignatureRequest`**
 
@@ -316,7 +314,7 @@ confirmMetamaskDataSignatureRequest(): Chainable<boolean>;
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 9.36.21 AM.png" alt="Confirm data (type 4) signing request in Metamask"><figcaption><p>Confirm data (type 4) signing request in Metamask</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/accept_data_sig_req.png" alt="Confirm data (type 4) signing request in Metamask"><figcaption><p>Confirm data (type 4) signing request in Metamask</p></figcaption></figure>
 
 ## **`rejectMetamaskSignatureRequest`**
 
@@ -327,7 +325,7 @@ Reject Metamask permission to sign a "regular" message.
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 9.31.55 AM.png" alt="Reject signature request in Metamask"><figcaption><p>Reject signature request from Metamask</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/reject_sig_req.png" alt="Reject signature request in Metamask"><figcaption><p>Reject signature request from Metamask</p></figcaption></figure>
 
 ## **`rejectMetamaskDataSignatureRequest`**
 
@@ -339,7 +337,7 @@ function rejectMetamaskDataSignatureRequest(): Chainable<boolean>;
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 9.36.40 AM.png" alt="Reject data (type 4) signing request in Metamask"><figcaption><p>Reject data (type 4) signing request in Metamask</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/reject_data_sig_req.png" alt="Reject data (type 4) signing request in Metamask"><figcaption><p>Reject data (type 4) signing request in Metamask</p></figcaption></figure>
 
 ## **`confirmMetamaskEncryptionPublicKeyRequest`**
 
@@ -351,7 +349,7 @@ function confirmMetamaskEncryptionPublicKeyRequest(): Chainable<boolean>;
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 9.40.05 AM.png" alt="Request encryption public key in Metamask"><figcaption><p>Request encryption public key in Metamask</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/accept_encryption_pub_key_req.png" alt="Request encryption public key in Metamask"><figcaption><p>Request encryption public key in Metamask</p></figcaption></figure>
 
 ## **`rejectMetamaskEncryptionPublicKeyRequest`**
 
@@ -363,7 +361,7 @@ function rejectMetamaskEncryptionPublicKeyRequest(): Chainable<boolean>;
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 9.40.23 AM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/reject_encryption_pub_key_req.png" alt=""><figcaption></figcaption></figure>
 
 ## **`confirmMetamaskDecryptionRequest`**
 
@@ -375,7 +373,7 @@ function confirmMetamaskDecryptionRequest(): Chainable<boolean>;
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 9.50.52 AM.png" alt="Accept decryption request in Metamask"><figcaption><p>Accept decryption request in Metamask</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/accept_decrypt_req.png" alt="Accept decryption request in Metamask"><figcaption><p>Accept decryption request in Metamask</p></figcaption></figure>
 
 ## **`rejectMetamaskDecryptionRequest`**
 
@@ -387,7 +385,7 @@ function rejectMetamaskDecryptionRequest(): Chainable<boolean>;
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 9.51.08 AM.png" alt="Request decryption request in Metamask"><figcaption><p>Reject decryption request in Metamask</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/reject_decrypt_req.png" alt="Request decryption request in Metamask"><figcaption><p>Reject decryption request in Metamask</p></figcaption></figure>
 
 ## **`importMetamaskToken`**
 
@@ -395,12 +393,12 @@ Add custom token to Metamask.
 
 ```typescript
 function importMetamaskToken(
-    tokenConfig: { address: string, symbol: string } | string
+  tokenConfig: { address: string; symbol: string } | string
 ): Chainable<{
-    tokenContractAddress: string,
-    tokensymbol: string,
-    tokenDecimals: string,
-    imported: boolean,
+  tokenContractAddress: string;
+  tokensymbol: string;
+  tokenDecimals: string;
+  imported: boolean;
 }>;
 ```
 
@@ -408,13 +406,14 @@ function importMetamaskToken(
 
 ```typescript
 it(`importMetamaskToken should import token to metamask`, () => {
-  const USDCContractAddressOnSepolia = '0xda9d4f9b69ac6C22e444eD9aF0CfC043b7a7f53f';
-  cy.importMetamaskToken(USDCContractAddressOnSepolia).then(tokenData => {
+  const USDCContractAddressOnSepolia =
+    "0xda9d4f9b69ac6C22e444eD9aF0CfC043b7a7f53f";
+  cy.importMetamaskToken(USDCContractAddressOnSepolia).then((tokenData) => {
     expect(tokenData.tokenContractAddress).to.be.equal(
-       USDCContractAddressOnSepolia,
+      USDCContractAddressOnSepolia
     );
-    expect(tokenData.tokenSymbol).to.be.equal('USDC');
-    expect(tokenData.tokenDecimals).to.be.equal('6');
+    expect(tokenData.tokenSymbol).to.be.equal("USDC");
+    expect(tokenData.tokenDecimals).to.be.equal("6");
     expect(tokenData.imported).to.be.true;
   });
 });
@@ -422,7 +421,7 @@ it(`importMetamaskToken should import token to metamask`, () => {
 
 #### **Preview**
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 9.53.27 AM.png" alt="Import token in Metamask"><figcaption><p>Import token in Metamask</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/add_custom_token.png" alt="Import token in Metamask"><figcaption><p>Import token in Metamask</p></figcaption></figure>
 
 ## **`confirmMetamaskAddToken`**
 
@@ -434,7 +433,7 @@ function confirmMetamaskAddToken(): Chainable<boolean>;
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 9.55.41 AM.png" alt="Add tokens request to Metamask"><figcaption><p>Add tokens request to Metamask</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/accept_add_token_req.png" alt="Add tokens request to Metamask"><figcaption><p>Add tokens request to Metamask</p></figcaption></figure>
 
 ## **`rejectMetamaskAddToken`**
 
@@ -446,19 +445,21 @@ function rejectMetamaskAddToken(): Chainable<boolean>;
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 9.55.55 AM.png" alt="Reject add token request in Metamask"><figcaption><p>Reject add token request in Metamask</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/reject_add_token_req.png" alt="Reject add token request in Metamask"><figcaption><p>Reject add token request in Metamask</p></figcaption></figure>
 
 ## **`confirmMetamaskPermissionToSpend`**
 
 Confirm Metamask's permission to spend assets.
 
 ```typescript
-function confirmMetamaskPermissionToSpend(spendLimit?: string): Chainable<boolean>;
+function confirmMetamaskPermissionToSpend(
+  spendLimit?: string
+): Chainable<boolean>;
 ```
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 10.00.24 AM.png" alt="Approve permission to spend tokens"><figcaption><p>Approve permission to spend tokens</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/approve_permission_to_spend.png" alt="Approve permission to spend tokens"><figcaption><p>Approve permission to spend tokens</p></figcaption></figure>
 
 ## **`rejectMetamaskPermissionToSpend`**
 
@@ -470,7 +471,7 @@ function rejectMetamaskPermissionToSpend(): Chainable<boolean>;
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 10.00.39 AM.png" alt="Reject permission to spend tokens in Metamask"><figcaption><p>Reject permission to spend tokens in MetaMask</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/reject_permission_to_spend.png" alt="Reject permission to spend tokens in Metamask"><figcaption><p>Reject permission to spend tokens in MetaMask</p></figcaption></figure>
 
 ## **`acceptMetamaskAccess`**
 
@@ -488,9 +489,9 @@ Accept Metamask access request.
 ```typescript
 // Use default Metamask options (will click next with the default selected account)
 cy.acceptMetamaskAccess();
-// Will accept "regular" signing requests after connection. 
+// Will accept "regular" signing requests after connection.
 cy.acceptMetamaskAccess({ confirmSignatureRequest: true });
-// Will accept "data" signing request after connection. 
+// Will accept "data" signing request after connection.
 cy.acceptMetamaskAccess({ confirmDataSignatureRequest: true });
 // Accept MetaMask connection to all accounts
 cy.acceptMetamaskAccess({ allAccounts: true });
@@ -505,16 +506,23 @@ cy.acceptMetamaskAccess({ allAccounts: true });
 Confirm Metamask transaction (auto-detects `eip-1559` and legacy transactions).
 
 ```typescript
-function confirmMetamaskTransaction(gasConfig?: {
-    gasLimit?: number, 
-    gasPrice?: number,
-    baseFee?: number, 
-    priorityFee?: number,
-} | 'low' | 'market' | 'aggressive' | 'site'): Chainable<{
-    recipientPublicAddress: string,
-    networkName: string,
-    customNonce: string,
-    confirmed: boolean
+function confirmMetamaskTransaction(
+  gasConfig?:
+    | {
+        gasLimit?: number;
+        gasPrice?: number;
+        baseFee?: number;
+        priorityFee?: number;
+      }
+    | "low"
+    | "market"
+    | "aggressive"
+    | "site"
+): Chainable<{
+  recipientPublicAddress: string;
+  networkName: string;
+  customNonce: string;
+  confirmed: boolean;
 }>;
 ```
 
@@ -522,8 +530,8 @@ function confirmMetamaskTransaction(gasConfig?: {
 
 ```typescript
 it(`confirmMetamaskTransaction should confirm legacy transaction using default settings`, () => {
-    cy.get('#sendButton').click();
-    cy.confirmMetamaskTransaction().then(txData => {
+  cy.get("#sendButton").click();
+  cy.confirmMetamaskTransaction().then((txData) => {
     expect(txData.recipientPublicAddress).to.be.not.empty;
     expect(txData.networkName).to.be.not.empty;
     expect(txData.customNonce).to.be.not.empty;
@@ -536,18 +544,18 @@ it(`confirmMetamaskTransaction should confirm legacy transaction using default s
 cy.confirmMetamaskTransaction({
   gasLimit: 210000,
   gasPrice: 100,
-}).then(txData => {
+}).then((txData) => {
   expect(txData.confirmed).to.be.true;
 });
- cy.confirmMetamaskTransaction('low');
- cy.confirmMetamaskTransaction('market');
- cy.confirmMetamaskTransaction('aggressive');
- cy.confirmMetamaskTransaction('site');
+cy.confirmMetamaskTransaction("low");
+cy.confirmMetamaskTransaction("market");
+cy.confirmMetamaskTransaction("aggressive");
+cy.confirmMetamaskTransaction("site");
 ```
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 10.14.05 AM.png" alt="Confirm Metamask transaction"><figcaption><p>Confirm Metamask transaction</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/confirm_tx.png" alt="Confirm Metamask transaction"><figcaption><p>Confirm Metamask transaction</p></figcaption></figure>
 
 ## **`rejectMetamaskTransaction`**
 
@@ -557,7 +565,7 @@ function rejectMetamaskTransaction(): Chainable<boolean>;
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 10.14.38 AM.png" alt="Reject Metamask transaction"><figcaption><p>Reject Metamask transaction</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/reject_tx.png" alt="Reject Metamask transaction"><figcaption><p>Reject Metamask transaction</p></figcaption></figure>
 
 ## **`allowMetamaskToAddNetwork`**
 
@@ -570,12 +578,12 @@ function allowMetamaskToAddNetwork(waitForEvent?: string): Chainable<boolean>;
 #### Example&#x20;
 
 ```typescript
- cy.allowMetamaskToAddNetwork('close');
+cy.allowMetamaskToAddNetwork("close");
 ```
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 10.17.08 AM.png" alt="Allow dApp to add a network in Metamask"><figcaption><p>Allow dApp to add a network in Metamask</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/accept_switch_network_req.png" alt="Allow dApp to add a network in Metamask"><figcaption><p>Allow dApp to add a network in Metamask</p></figcaption></figure>
 
 ## **`rejectMetamaskToAddNetwork`**
 
@@ -587,7 +595,7 @@ function rejectMetamaskToAddNetwork(): Chainable<boolean>;
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 10.17.30 AM.png" alt="Reject dApp to add a network in Metamask"><figcaption><p>Reject dApp to add a network in Metamask</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/reject_add_network_req.png" alt="Reject dApp to add a network in Metamask"><figcaption><p>Reject dApp to add a network in Metamask</p></figcaption></figure>
 
 ## **`allowMetamaskToSwitchNetwork`**
 
@@ -599,7 +607,7 @@ function allowMetamaskToSwitchNetwork(): Chainable<boolean>;
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 10.20.41 AM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/accept_switch_network_req.png" alt=""><figcaption></figcaption></figure>
 
 ## **`rejectMetamaskToSwitchNetwork`**
 
@@ -611,7 +619,7 @@ function rejectMetamaskToSwitchNetwork(): Chainable<boolean>;
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 10.21.03 AM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/reject_switch_network_req.png" alt=""><figcaption></figcaption></figure>
 
 ## **`allowMetamaskToAddAndSwitchNetwork`**
 
@@ -630,12 +638,12 @@ function unlockMetamask(password: string): Chainable<boolean>;
 #### Example&#x20;
 
 ```typescript
- cy.unlockMetamask('my_password');
+cy.unlockMetamask("my_password");
 ```
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 10.22.52 AM.png" alt="Unlock Metamask"><figcaption><p>Unlock Metamask</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/unlock_metamask.png" alt="Unlock Metamask"><figcaption><p>Unlock Metamask</p></figcaption></figure>
 
 ## **`fetchMetamaskWalletAddress`**
 
@@ -648,7 +656,7 @@ function fetchMetamaskWalletAddress(): Chainable<string>;
 #### Example&#x20;
 
 ```typescript
-cy.fetchMetamaskWalletAddress().then(address => cy.log(address));
+cy.fetchMetamaskWalletAddress().then((address) => cy.log(address));
 ```
 
 ## **`setupMetamask`**
@@ -676,18 +684,18 @@ setupMetamask(
 
 ```typescript
 cy.setupMetamask();
-cy.setupMetamask('secret, words, ...', 'goerli', 'metamask_password');
+cy.setupMetamask("secret, words, ...", "goerli", "metamask_password");
 cy.setupMetamask(
-    'secret, words, ...', 
-    {
-        networkName: 'name', 
-        rpcUrl: 'https://eth.llamarpc.com', 
-        chainId: 1, 
-        symbol: 'ETH', 
-        blockExplorer: 'https://etherscan.io/', 
-        isTestnet: true
-    }, 
-    'metamask_password'
+  "secret, words, ...",
+  {
+    networkName: "name",
+    rpcUrl: "https://eth.llamarpc.com",
+    chainId: 1,
+    symbol: "ETH",
+    blockExplorer: "https://etherscan.io/",
+    isTestnet: true,
+  },
+  "metamask_password"
 );
 ```
 
@@ -725,15 +733,17 @@ type TxReceipt = {
 };
 
 function etherscanGetTransactionStatus(txid: string): Chainable<{
-  txStatus: TxStatus, 
-  txReceipt: TxReceipt,
+  txStatus: TxStatus;
+  txReceipt: TxReceipt;
 }>;
 ```
 
 #### Example&#x20;
 
 ```typescript
-cy.etherscanGetTransactionStatus('0x3af85fa2369b75f327619f5968fd4cc08806ef9481d57ac32774beaf34641be9')
+cy.etherscanGetTransactionStatus(
+  "0x3af85fa2369b75f327619f5968fd4cc08806ef9481d57ac32774beaf34641be9"
+);
 ```
 
 ### **`etherscanWaitForTxSuccess`**
@@ -752,7 +762,7 @@ Activate the ability (in Metamask settings) to specify custom gas prices and lim
 
 ```typescript
 function activateAdvancedGasControlInMetamask(
-  skipSetup?: boolean,
+  skipSetup?: boolean
 ): Chainable<boolean>;
 ```
 
@@ -766,7 +776,7 @@ function activateShowHexDataInMetamask(skipSetup?: boolean): Chainable<boolean>;
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 10.30.05 AM.png" alt="Show hex data option in Metamask settings"><figcaption><p>Show hex data option in Metamask settings</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/show_hex_data.png" alt="Show hex data option in Metamask settings"><figcaption><p>Show hex data option in Metamask settings</p></figcaption></figure>
 
 ### **`activateTestnetConversionInMetamask`**
 
@@ -774,13 +784,13 @@ Activate the ability (in Metamask settings) to show fiat conversions on testnets
 
 ```typescript
 function activateTestnetConversionInMetamask(
-  skipSetup?: boolean,
+  skipSetup?: boolean
 ): Chainable<boolean>;
 ```
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 10.30.32 AM.png" alt="Show conversion on test networks option in Metamask settings"><figcaption><p>Show conversion on test networks option in Metamask settings</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/show_conversion_on_test_networks.png" alt="Show conversion on test networks option in Metamask settings"><figcaption><p>Show conversion on test networks option in Metamask settings</p></figcaption></figure>
 
 ### **`activateShowTestnetNetworksInMetamask`**
 
@@ -788,13 +798,13 @@ Activate the ability (in Metamask settings) to show testnet networks in Metamask
 
 ```typescript
 function activateShowTestnetNetworksInMetamask(
-  skipSetup?: boolean,
+  skipSetup?: boolean
 ): Chainable<boolean>;
 ```
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 10.30.55 AM.png" alt="Show test networks option in Metamask settings"><figcaption><p>Show test networks option in Metamask settings</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/show_test_networks.png" alt="Show test networks option in Metamask settings"><figcaption><p>Show test networks option in Metamask settings</p></figcaption></figure>
 
 ### **`activateCustomNonceInMetamask`**
 
@@ -806,7 +816,7 @@ function activateCustomNonceInMetamask(skipSetup?: boolean): Chainable<boolean>;
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 10.31.20 AM (1).png" alt="Customize transaction nonce option in Metamask settings"><figcaption><p>Customize transaction nonce option in Metamask settings</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/customize_transaction_nonce.png" alt="Customize transaction nonce option in Metamask settings"><figcaption><p>Customize transaction nonce option in Metamask settings</p></figcaption></figure>
 
 ### **`activateDismissBackupReminderInMetamask`**
 
@@ -814,13 +824,13 @@ Activate the ability (in Metamask settings) to dismiss secret recovery phrase re
 
 ```typescript
 function activateDismissBackupReminderInMetamask(
-  skipSetup?: boolean,
+  skipSetup?: boolean
 ): Chainable<boolean>;
 ```
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 10.31.54 AM (1).png" alt="Dismiss secret recovery phrase backup reminder option in Metamask settings"><figcaption><p>Dismiss secret recovery phrase backup reminder option in Metamask settings</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/dismiss_secret_recovery_phrase_backup_reminder.png" alt="Dismiss secret recovery phrase backup reminder option in Metamask settings"><figcaption><p>Dismiss secret recovery phrase backup reminder option in Metamask settings</p></figcaption></figure>
 
 ### **`activateEthSignRequestsInMetamask`**
 
@@ -831,7 +841,7 @@ Activate eth sign requests in Metamask settings.
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 10.32.08 AM.png" alt="Toggle eth_sign requests option in Metamask settings"><figcaption><p>Toggle eth_sign requests option in Metamask settings</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/toggle_eth_sign_req.png" alt="Toggle eth_sign requests option in Metamask settings"><figcaption><p>Toggle eth_sign requests option in Metamask settings</p></figcaption></figure>
 
 ### **`activateImprovedTokenAllowanceInMetamask`**
 
@@ -839,7 +849,7 @@ Activate improved token allowance in Metamask settings (experimental).
 
 ```typescript
 function activateImprovedTokenAllowanceInMetamask(
-  skipSetup?: boolean,
+  skipSetup?: boolean
 ): Chainable<boolean>;
 ```
 
@@ -853,6 +863,4 @@ function resetMetamaskAccount(): Chainable<boolean>;
 
 #### Preview&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-12 at 10.47.04 AM.png" alt="Reset Metamask account"><figcaption><p>Reset Metamask account</p></figcaption></figure>
-
-\
+<figure><img src="../.gitbook/assets/reset_account.png" alt="Reset Metamask account"><figcaption><p>Reset Metamask account</p></figcaption></figure>
