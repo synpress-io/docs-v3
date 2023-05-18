@@ -863,4 +863,4 @@ function resetMetamaskAccount(): Chainable<boolean>;
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/reset_account.png" alt="Reset Metamask account"><figcaption><p>Reset Metamask account</p></figcaption></figure>
+<figure><img src="broken-reference" alt="Reset Metamask account"><figcaption><p>Reset Metamask account</p></figcaption></figure>
