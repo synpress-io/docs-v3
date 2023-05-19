@@ -11,6 +11,6 @@
   * [Running From GitLab CI/CD](e2e-testing/running-from-gitlab-ci-cd.md)
   * [Configuration](e2e-testing/configuration.md)
   * [Learn more!!](e2e-testing/learn-more.md)
+* [🗝 Synpress API](cypress-api.md)
 * [Synpress API](synpress-api/README.md)
-  * [Cypress API](synpress-api/cypress-api.md)
   * [Playwright API](synpress-api/playwright-api.md)

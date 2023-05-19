@@ -352,11 +352,39 @@ function disconnectWalletFromAllDapps(): Promise<boolean>;
 
 ## `activateAdvancedGasControl`
 
+Activate the ability (in Metamask settings) to specify custom gas prices and limits while doing transactions in Metamask.
+
+```typescript
+function activateAdvancedGasControl(skipSetup?: boolean): Promise<boolean>;
+```
+
 ## `activateShowHexData`
+
+Activate the ability (in Metamask settings) to show hex data while doing transactions in Metamask.
+
+```typescript
+function activateShowHexData(skipSetup?: boolean): Promise<boolean>;
+```
+
+#### Preview&#x20;
+
+<figure><img src="https://raw.githubusercontent.com/synpress-io/docs/main/.gitbook/assets/show_hex_data.png" alt=""><figcaption></figcaption></figure>
 
 ## `activateTestnetConversion`
 
+Activate the ability (in Metamask settings) to show fiat conversions on testnets in Metamask.
+
+```typescript
+function activateTestnetConversion(skipSetup?: boolean): Promise<boolean>;
+```
+
+#### Preview&#x20;
+
+<figure><img src="https://raw.githubusercontent.com/synpress-io/docs/main/.gitbook/assets/show_conversion_on_test_networks.png" alt="Show conversion on test networks"><figcaption><p>Show conversion on test networks</p></figcaption></figure>
+
 ## `activateShowTestnetNetworks`
+
+
 
 ## `activateCustomNonce`
 
