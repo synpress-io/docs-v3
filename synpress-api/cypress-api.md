@@ -1065,7 +1065,7 @@ await playwright.acceptAccess({ allAccounts: true });
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/Screenshot%202023-05-12%20at%2010.04.23%20AM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/accept_metamask_access.png" alt="Accept Metamask access"><figcaption></figcaption></figure>
 
 ## **Confirm Metamask Transaction**
 
@@ -1620,7 +1620,7 @@ await metamask.activateShowHexData();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/show_hex_data (1).png" alt="Show hex data option in Metamask settings"><figcaption><p>Show hex data option in Metamask settings</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/show_hex_data.png" alt="Show hex data option in Metamask settings"><figcaption><p>Show hex data option in Metamask settings</p></figcaption></figure>
 
 ### **Activate Testnet Conversion In Metamask**
 
@@ -1726,7 +1726,7 @@ await metamask.activateCustomNonce();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/customize_transaction_nonce (1).png" alt="Customize transaction nonce option in Metamask settings"><figcaption><p>Customize transaction nonce option in Metamask settings</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/customize_transaction_nonce.png" alt="Customize transaction nonce option in Metamask settings"><figcaption><p>Customize transaction nonce option in Metamask settings</p></figcaption></figure>
 
 ### **Activate Dismiss Backup Reminder In Metamask**
 
@@ -1762,7 +1762,7 @@ await metamask.activateDismissBackupReminder();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/dismiss_secret_recovery_phrase_backup_reminder (1).png" alt="Dismiss secret recovery phrase backup reminder option in Metamask settings"><figcaption><p>Dismiss secret recovery phrase backup reminder option in Metamask settings</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/dismiss_secret_recovery_phrase_backup_reminder.png" alt="Dismiss secret recovery phrase backup reminder option in Metamask settings"><figcaption><p>Dismiss secret recovery phrase backup reminder option in Metamask settings</p></figcaption></figure>
 
 ### **Activate `eth_sign` Requests In Metamask**
 
