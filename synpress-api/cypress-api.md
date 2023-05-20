@@ -4,7 +4,7 @@ description: List of all Cypress/Playwright APIs used in Synpress
 
 # 🗝 Synpress API
 
-Initialize Playwright
+## Initialize Playwright
 
 ### Cypress  — `cy.initPlaywright()`
 
@@ -52,11 +52,12 @@ cy.assignWindows().should('be.true');
 
 ### **Playwright**&#x20;
 
-<pre class="language-typescript"><code class="lang-typescript"><strong>import * as playwright from "@synthetixio/synpress/commands/playwright";
-</strong>
+```typescript
+import * as playwright from "@synthetixio/synpress/commands/playwright";
+
 const connected = await playwright.init();
 const assigned = await playwright.assignWindows();
-</code></pre>
+```
 
 ## **`assignActiveTabName`**
 
