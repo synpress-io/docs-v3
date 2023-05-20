@@ -6,7 +6,7 @@ description: List of all Cypress/Playwright APIs used in Synpress
 
 ## Initialize Playwright
 
-### Cypress  — `cy.initPlaywright()`
+### Cypress — `cy.initPlaywright()`
 
 Connect Playwright with Cypress instance.
 
@@ -47,7 +47,7 @@ function assignWindows(): Chainable<boolean>;
 ### **Cypress**&#x20;
 
 ```typescript
-cy.assignWindows().should('be.true');
+cy.assignWindows().should("be.true");
 ```
 
 ### **Playwright**&#x20;
@@ -78,7 +78,7 @@ cy.assignActiveTabName("my_tab");
 ```typescript
 import * as playwright from "@synthetixio/synpress/commands/playwright";
 
-await playwright.assignActiveTabName('my_tab');
+await playwright.assignActiveTabName("my_tab");
 ```
 
 ## **`isMetamaskWindowActive`**
@@ -91,7 +91,7 @@ Checks if the currently active window is Metamask.
 ### Cypress
 
 ```javascript
-cy.isMetamaskWindowActive().should('be.true');
+cy.isMetamaskWindowActive().should("be.true");
 ```
 
 ### Playwright
@@ -134,7 +134,7 @@ function switchToCypressWindow(): Promise<boolean>;
 ### **Cypress**
 
 ```javascript
-cy.switchToCypressWindow().should('be.true');
+cy.switchToCypressWindow().should("be.true");
 ```
 
 ### Playwright&#x20;
@@ -156,7 +156,7 @@ function switchToMetamaskWindow(): Promise<boolean>;
 ### Cypress
 
 ```typescript
-cy.switchToMetamaskWindow().should('be.true');
+cy.switchToMetamaskWindow().should("be.true");
 ```
 
 ### Playwright&#x20;
@@ -178,7 +178,7 @@ function switchToMetamaskNotification(): Promise<boolean>;
 ### Cypress
 
 ```javascript
-cy.switchToMetamaskNotification().should('be.true');
+cy.switchToMetamaskNotification().should("be.true");
 ```
 
 ### Playwright
@@ -227,7 +227,7 @@ expect(network.isTestnet).to.be.true;
 
 Add network in MetaMask (and switch to the newly added network).
 
-### Cypress —  `addMetamaskNetwork`
+### Cypress — `addMetamaskNetwork`
 
 ```typescript
 function addMetamaskNetwork(network: {
@@ -319,7 +319,7 @@ function changeNetwork(networkName?: string): Promise<boolean>;
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
 
-await metamask.changeNetwork('mainnet');
+await metamask.changeNetwork("mainnet");
 // Switch to the network defined in `process.env.NETWORK_NAME` or default to `goerli`
 await metamask.changeNetwork();
 ```
@@ -332,7 +332,7 @@ await metamask.changeNetwork();
 
 Import a new account in Metamask using a private key.
 
-### Cypress  — `importMetamaskAccount`
+### Cypress — `importMetamaskAccount`
 
 ```typescript
 function importMetamaskAccount(pk: string): Chainable<boolean>;
@@ -358,7 +358,9 @@ function importAccount(pk: string): Promise<boolean>;
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
 
-await metamask.importAccount('0x2a871d0798f97d79848a013d4936a73bf4cc922c825d33c1cf7073dff6d409c6');
+await metamask.importAccount(
+  "0x2a871d0798f97d79848a013d4936a73bf4cc922c825d33c1cf7073dff6d409c6"
+);
 await metamask.importAccount(process.env.E2E_PRIVATE_KEY);
 ```
 
@@ -382,7 +384,7 @@ cy.createMetamaskAccount();
 cy.createMetamaskAccount("custom-wallet");
 ```
 
-### Playwright  — `createAccount`
+### Playwright — `createAccount`
 
 ```typescript
 function createAccount(accountName?: string): Promise<boolean>;
@@ -393,7 +395,7 @@ function createAccount(accountName?: string): Promise<boolean>;
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
 
-await metamask.createAccount('my_account');
+await metamask.createAccount("my_account");
 await metamask.createAccount();
 ```
 
@@ -433,7 +435,7 @@ function switchAccount(
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
 
-await metamask.switchAccount('my_account');
+await metamask.switchAccount("my_account");
 await metamask.switchAccount(2);
 ```
 
@@ -445,7 +447,7 @@ await metamask.switchAccount(2);
 
 Get the current wallet address of Metamask wallet.
 
-### Cypress  — `getMetamaskWalletAddress`
+### Cypress — `getMetamaskWalletAddress`
 
 ```typescript
 function getMetamaskWalletAddress(): Chainable<string>;
@@ -459,7 +461,7 @@ cy.getMetamaskWalletAddress().then((address) => {
 });
 ```
 
-### Playwright  — `getWalletAddress`
+### Playwright — `getWalletAddress`
 
 ```typescript
 function getWalletAddress(): Promise<string>;
@@ -471,7 +473,7 @@ function getWalletAddress(): Promise<string>;
 import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 const walletAddress = await metamask.getWalletAddress();
-expect(walletAddress).to.be.equal('0x70997970C51812dc3A010C7d01b50e0d17dc79C8');
+expect(walletAddress).to.be.equal("0x70997970C51812dc3A010C7d01b50e0d17dc79C8");
 ```
 
 ## **Disconnect Metamask Wallet From dApp**
@@ -487,10 +489,10 @@ function disconnectMetamaskWalletFromDapp(): Chainable<boolean>;
 #### Example&#x20;
 
 ```typescript
-cy.disconnectMetamaskWalletFromDapp().should('be.true');
+cy.disconnectMetamaskWalletFromDapp().should("be.true");
 ```
 
-### Playwright  — `disconnectWalletFromDapp`
+### Playwright — `disconnectWalletFromDapp`
 
 ```typescript
 function disconnectWalletFromDapp(): Promise<boolean>;
@@ -521,7 +523,7 @@ function disconnectMetamaskWalletFromAllDapps(): Chainable<boolean>;
 #### Example&#x20;
 
 ```typescript
-cy.disconnectMetamaskWalletFromAllDapps().should('be.true');
+cy.disconnectMetamaskWalletFromAllDapps().should("be.true");
 ```
 
 ### Playwright — `disconnectWalletFromAllDapps`
@@ -555,7 +557,7 @@ function confirmMetamaskSignatureRequest(): Chainable<boolean>;
 #### Example&#x20;
 
 ```typescript
-cy.confirmMetamaskSignatureRequest().should('be.true');
+cy.confirmMetamaskSignatureRequest().should("be.true");
 ```
 
 ### Playwright — `confirmSignatureRequest`
@@ -580,7 +582,7 @@ await metamask.confirmSignatureRequest();
 
 Confirm Metamask's permission to sign a Data "type 4" message.
 
-### Cypress  — `confirmMetamaskDataSignatureRequest`
+### Cypress — `confirmMetamaskDataSignatureRequest`
 
 <pre class="language-typescript"><code class="lang-typescript"><strong>function confirmMetamaskDataSignatureRequest(): Chainable&#x3C;boolean>;
 </strong></code></pre>
@@ -588,7 +590,7 @@ Confirm Metamask's permission to sign a Data "type 4" message.
 #### Example&#x20;
 
 ```typescript
-cy.confirmMetamaskDataSignatureRequest().should('be.true');
+cy.confirmMetamaskDataSignatureRequest().should("be.true");
 ```
 
 ### Playwright — `confirmDataSignatureRequest`
@@ -621,7 +623,7 @@ Reject Metamask permission to sign a "regular" message.
 #### Example&#x20;
 
 ```typescript
-cy.rejectMetamaskSignatureRequest().should('be.true');
+cy.rejectMetamaskSignatureRequest().should("be.true");
 ```
 
 ### Playwright — `rejectSignatureRequest`
@@ -655,7 +657,7 @@ function rejectMetamaskDataSignatureRequest(): Chainable<boolean>;
 #### Example&#x20;
 
 ```typescript
-cy.rejectMetamaskDataSignatureRequest().should('be.true');
+cy.rejectMetamaskDataSignatureRequest().should("be.true");
 ```
 
 ### Playwright — `rejectDataSignatureRequest`
@@ -689,7 +691,7 @@ function confirmMetamaskEncryptionPublicKeyRequest(): Chainable<boolean>;
 #### Example&#x20;
 
 ```typescript
-cy.confirmMetamaskEncryptionPublicKeyRequest().should('be.true');
+cy.confirmMetamaskEncryptionPublicKeyRequest().should("be.true");
 ```
 
 ### Playwright — `confirmEncryptionPublicKeyRequest`
@@ -723,7 +725,7 @@ function rejectMetamaskEncryptionPublicKeyRequest(): Chainable<boolean>;
 #### Example&#x20;
 
 ```typescript
-cy.rejectMetamaskEncryptionPublicKeyRequest().should('be.true');
+cy.rejectMetamaskEncryptionPublicKeyRequest().should("be.true");
 ```
 
 ### Playwright — `rejectEncryptionPublicKeyRequest`
@@ -748,7 +750,7 @@ await metamask.rejectEncryptionPublicKeyRequest();
 
 Confirm Metamask's request to decrypt a message with the private key.
 
-### Cypress —  `confirmMetamaskDecryptionRequest`
+### Cypress — `confirmMetamaskDecryptionRequest`
 
 ```typescript
 function confirmMetamaskDecryptionRequest(): Chainable<boolean>;
@@ -757,7 +759,7 @@ function confirmMetamaskDecryptionRequest(): Chainable<boolean>;
 #### Example&#x20;
 
 ```typescript
-cy.confirmMetamaskDecryptionRequest().should('be.true');
+cy.confirmMetamaskDecryptionRequest().should("be.true");
 ```
 
 ### Playwright — `confirmDecryptionRequest`
@@ -791,7 +793,7 @@ function rejectMetamaskDecryptionRequest(): Chainable<boolean>;
 #### Example&#x20;
 
 ```typescript
-cy.rejectMetamaskDecryptionRequest().should('be.true');
+cy.rejectMetamaskDecryptionRequest().should("be.true");
 ```
 
 ### Playwright — `rejectDecryptionRequest`
@@ -866,7 +868,8 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 test("import token", async ({ page }) => {
   await page.click("#import-token");
-  const USDCContractAddressOnSepolia = "0xda9d4f9b69ac6C22e444eD9aF0CfC043b7a7f53f";
+  const USDCContractAddressOnSepolia =
+    "0xda9d4f9b69ac6C22e444eD9aF0CfC043b7a7f53f";
   const tokenData = await metamask.importToken(USDCContractAddressOnSepolia);
   await expect(tokenData.tokenContractAddress).to.be.equal(
     USDCContractAddressOnSepolia
@@ -885,7 +888,7 @@ test("import token", async ({ page }) => {
 
 Confirm Metamask's request to add a token.
 
-### Cypress  — `confirmMetamaskAddToken`
+### Cypress — `confirmMetamaskAddToken`
 
 ```typescript
 function confirmMetamaskAddToken(): Chainable<boolean>;
@@ -894,10 +897,10 @@ function confirmMetamaskAddToken(): Chainable<boolean>;
 #### Example&#x20;
 
 ```typescript
-cy.confirmMetamaskAddToken().should('be.true');
+cy.confirmMetamaskAddToken().should("be.true");
 ```
 
-### Playwright  — `confirmAddToken`
+### Playwright — `confirmAddToken`
 
 ```typescript
 function confirmAddToken(): Promise<boolean>;
@@ -928,7 +931,7 @@ function rejectMetamaskAddToken(): Chainable<boolean>;
 #### Example&#x20;
 
 ```typescript
-cy.rejectMetamaskAddToken().should('be.true');
+cy.rejectMetamaskAddToken().should("be.true");
 ```
 
 ### Playwright — `rejectAddToken`
@@ -964,7 +967,7 @@ function confirmMetamaskPermissionToSpend(
 #### Example&#x20;
 
 ```typescript
-cy.confirmMetamaskPermissionToSpend().should('be.true');
+cy.confirmMetamaskPermissionToSpend().should("be.true");
 ```
 
 ### Playwright — `confirmPermissionToSpend`
@@ -998,7 +1001,7 @@ function rejectMetamaskPermissionToSpend(): Chainable<boolean>;
 #### Example&#x20;
 
 ```typescript
-cy.rejectMetamaskPermissionToSpend().should('be.true');
+cy.rejectMetamaskPermissionToSpend().should("be.true");
 ```
 
 ### Playwright — `rejectPermissionToSpend`
@@ -1042,9 +1045,9 @@ cy.acceptMetamaskAccess({ allAccounts: true });
 ```typescript
 function acceptAccess(options?: {
   allAccounts?: boolean; // Will select all the accounts.
-  confirmSignatureRequest?: boolean; // Will accept "regular" signing request after connection. 
-  confirmDataSignatureRequest?: boolean; // Will accept "data" signing request after connection. 
-}): Promise<boolean>
+  confirmSignatureRequest?: boolean; // Will accept "regular" signing request after connection.
+  confirmDataSignatureRequest?: boolean; // Will accept "data" signing request after connection.
+}): Promise<boolean>;
 ```
 
 #### Example&#x20;
@@ -1171,10 +1174,10 @@ function rejectMetamaskTransaction(): Chainable<boolean>;
 #### Example&#x20;
 
 ```typescript
-cy.rejectMetamaskTransaction().should('be.true');
+cy.rejectMetamaskTransaction().should("be.true");
 ```
 
-### Playwright  — `rejectTransaction`
+### Playwright — `rejectTransaction`
 
 ```typescript
 function rejectTransaction(): Promise<boolean>;
@@ -1205,14 +1208,14 @@ function allowMetamaskToAddNetwork(waitForEvent?: string): Chainable<boolean>;
 #### Example
 
 ```typescript
-cy.allowMetamaskToAddNetwork("close").should('be.true');
-cy.allowMetamaskToAddNetwork().should('be.true');
+cy.allowMetamaskToAddNetwork("close").should("be.true");
+cy.allowMetamaskToAddNetwork().should("be.true");
 ```
 
 ### Playwright — `allowToAddNetwork`
 
 ```typescript
-function allowToAddNetwork(waitForEvent?: string): Promise<boolean>
+function allowToAddNetwork(waitForEvent?: string): Promise<boolean>;
 ```
 
 #### Example&#x20;
@@ -1231,7 +1234,7 @@ await metamask.allowToAddNetwork();
 
 Reject dApp to add a new network in Metamask.
 
-### Cypress  — `rejectMetamaskToAddNetwork`
+### Cypress — `rejectMetamaskToAddNetwork`
 
 ```typescript
 function rejectMetamaskToAddNetwork(): Chainable<boolean>;
@@ -1240,10 +1243,10 @@ function rejectMetamaskToAddNetwork(): Chainable<boolean>;
 #### Example&#x20;
 
 ```typescript
-cy.rejectMetamaskToAddNetwork().should('be.true');
+cy.rejectMetamaskToAddNetwork().should("be.true");
 ```
 
-### Playwright  — `rejectToAddNetwork`
+### Playwright — `rejectToAddNetwork`
 
 ```typescript
 function rejectToAddNetwork(): Promise<boolean>;
@@ -1274,10 +1277,10 @@ function allowMetamaskToSwitchNetwork(): Chainable<boolean>;
 #### Example&#x20;
 
 ```typescript
-cy.allowMetamaskToSwitchNetwork().should('be.true')
+cy.allowMetamaskToSwitchNetwork().should("be.true");
 ```
 
-### Playwright —  `allowToSwitchNetwork`
+### Playwright — `allowToSwitchNetwork`
 
 ```typescript
 function allowToSwitchNetwork(): Promise<boolean>;
@@ -1299,7 +1302,7 @@ await metamask.allowToSwitchNetwork();
 
 Reject the dApp to switch the network in Metamask.
 
-### Cypress —  `rejectMetamaskToSwitchNetwork`
+### Cypress — `rejectMetamaskToSwitchNetwork`
 
 ```typescript
 function rejectMetamaskToSwitchNetwork(): Chainable<boolean>;
@@ -1308,10 +1311,10 @@ function rejectMetamaskToSwitchNetwork(): Chainable<boolean>;
 #### Example&#x20;
 
 ```typescript
-cy.rejectMetamaskToSwitchNetwork().should('be.true');
+cy.rejectMetamaskToSwitchNetwork().should("be.true");
 ```
 
-### Playwright —  `rejectToSwitchNetwork`
+### Playwright — `rejectToSwitchNetwork`
 
 ```typescript
 function rejectToSwitchNetwork(): Promise<boolean>;
@@ -1342,7 +1345,7 @@ function allowMetamaskToAddAndSwitchNetwork(): Chainable<boolean>;
 #### Example&#x20;
 
 ```typescript
-cy.allowMetamaskToAddAndSwitchNetwork().should('be.true');
+cy.allowMetamaskToAddAndSwitchNetwork().should("be.true");
 ```
 
 ### Playwright — `allowToAddAndSwitchNetwork`
@@ -1419,7 +1422,7 @@ function fetchWalletAddress(): Promise<string>;
 import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 const walletAddr = await metamask.fetchWalletAddress();
-await expect(walletAddr).to.be.eq('0x...');
+await expect(walletAddr).to.be.eq("0x...");
 ```
 
 ## **Setup Metamask**
@@ -1464,7 +1467,7 @@ cy.setupMetamask(
 );
 ```
 
-### Playwright  — `initialSetup`
+### Playwright — `initialSetup`
 
 ```typescript
 function initialSetup(browser: BrowserType<{}> | null, {
@@ -1598,13 +1601,13 @@ function activateShowHexDataInMetamask(skipSetup?: boolean): Chainable<boolean>;
 #### Example&#x20;
 
 ```typescript
-cy.activateShowHexDataInMetamask().should('be.true');
+cy.activateShowHexDataInMetamask().should("be.true");
 ```
 
-### Playwright  — `activateShowHexData`
+### Playwright — `activateShowHexData`
 
 ```typescript
-function activateShowHexData(skipSetup?: boolean): Promise<boolean>
+function activateShowHexData(skipSetup?: boolean): Promise<boolean>;
 ```
 
 #### Example&#x20;
@@ -1634,7 +1637,7 @@ function activateTestnetConversionInMetamask(
 #### Example&#x20;
 
 ```typescript
-cy.activateTestnetConversionInMetamask().should('be.true');
+cy.activateTestnetConversionInMetamask().should("be.true");
 ```
 
 ### Playwright — `activateTestnetConversion`
@@ -1670,15 +1673,13 @@ function activateShowTestnetNetworksInMetamask(
 #### Example&#x20;
 
 ```typescript
-cy.activateShowTestnetNetworksInMetamask().should('be.true');
+cy.activateShowTestnetNetworksInMetamask().should("be.true");
 ```
 
 ### Playwright — `activateShowTestnetNetworks`
 
 ```typescript
-function activateShowTestnetNetworks(
-  skipSetup?: boolean
-): Promise<boolean>;
+function activateShowTestnetNetworks(skipSetup?: boolean): Promise<boolean>;
 ```
 
 #### Example&#x20;
@@ -1697,7 +1698,7 @@ await metamask.activateShowTestnetNetworks();
 
 Activate the ability (in Metamask settings) to specify custom nonce while doing transactions in Metamask.
 
-### Cypress  — `activateCustomNonceInMetamask`
+### Cypress — `activateCustomNonceInMetamask`
 
 ```typescript
 function activateCustomNonceInMetamask(skipSetup?: boolean): Chainable<boolean>;
@@ -1706,13 +1707,13 @@ function activateCustomNonceInMetamask(skipSetup?: boolean): Chainable<boolean>;
 #### Example&#x20;
 
 ```typescript
-cy.activateCustomNonceInMetamask().should('be.true');
+cy.activateCustomNonceInMetamask().should("be.true");
 ```
 
-### Playwright  — `activateCustomNonce`
+### Playwright — `activateCustomNonce`
 
 ```typescript
-function activateCustomNonce(skipSetup?: boolean): Promise<boolean>
+function activateCustomNonce(skipSetup?: boolean): Promise<boolean>;
 ```
 
 #### Example&#x20;
@@ -1742,7 +1743,7 @@ function activateDismissBackupReminderInMetamask(
 #### Example&#x20;
 
 ```typescript
-cy.activateDismissBackupReminderInMetamask().should('be.true');
+cy.activateDismissBackupReminderInMetamask().should("be.true");
 ```
 
 ### Playwright — `activateDismissBackupReminder`
@@ -1775,13 +1776,13 @@ Activate eth sign requests in Metamask settings.
 #### Example&#x20;
 
 ```typescript
-cy.activateEthSignRequestsInMetamask().should('be.true');
+cy.activateEthSignRequestsInMetamask().should("be.true");
 ```
 
 ### Playwright — `activateEthSignRequests`
 
 ```typescript
-function activateEthSignRequests(skipSetup?: boolean): Promise<boolean>
+function activateEthSignRequests(skipSetup?: boolean): Promise<boolean>;
 ```
 
 #### Example&#x20;
@@ -1811,13 +1812,13 @@ function activateImprovedTokenAllowanceInMetamask(
 #### Example&#x20;
 
 ```typescript
-cy.activateImprovedTokenAllowanceInMetamask().should('be.true');
+cy.activateImprovedTokenAllowanceInMetamask().should("be.true");
 ```
 
 ### Playwright — `activateImprovedTokenAllowance`
 
 ```typescript
-function activateImprovedTokenAllowance(skipSetup?: boolean): Promise<boolean>
+function activateImprovedTokenAllowance(skipSetup?: boolean): Promise<boolean>;
 ```
 
 #### Example&#x20;
@@ -1841,13 +1842,13 @@ function resetMetamaskAccount(): Chainable<boolean>;
 #### Example&#x20;
 
 ```typescript
-cy.resetMetamaskAccount().should('be.true');
+cy.resetMetamaskAccount().should("be.true");
 ```
 
 ### Playwright — `resetAccount`
 
 ```typescript
-function resetAccount(): Promise<boolean>
+function resetAccount(): Promise<boolean>;
 ```
 
 #### Example&#x20;
