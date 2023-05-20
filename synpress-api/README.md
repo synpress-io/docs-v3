@@ -1,2 +1,0 @@
-# Synpress API
-
