@@ -22,13 +22,13 @@ cy.initPlaywright();
 
 ### Playwright — `init`
 
-Initialize Playwright instance.&#x20;
+Initialize Playwright instance.
 
 ```typescript
 function init(playwrightInstance: BrowserType<{}>): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as playwright from "@synthetixio/synpress/commands/playwright";
@@ -44,13 +44,13 @@ Assign currently open tabs with Playwright.
 function assignWindows(): Chainable<boolean>;
 ```
 
-### **Cypress**&#x20;
+### **Cypress**
 
 ```typescript
 cy.assignWindows().should("be.true");
 ```
 
-### **Playwright**&#x20;
+### **Playwright**
 
 ```typescript
 import * as playwright from "@synthetixio/synpress/commands/playwright";
@@ -73,7 +73,7 @@ function assignActiveTabName(tabName: string): Chainable<boolean>;
 cy.assignActiveTabName("my_tab");
 ```
 
-### Playwright&#x20;
+### Playwright
 
 ```typescript
 import * as playwright from "@synthetixio/synpress/commands/playwright";
@@ -137,7 +137,7 @@ function switchToCypressWindow(): Promise<boolean>;
 cy.switchToCypressWindow().should("be.true");
 ```
 
-### Playwright&#x20;
+### Playwright
 
 ```typescript
 import * as playwright from "@synthetixio/synpress/commands/playwright";
@@ -147,7 +147,7 @@ const switched = await playwright.switchToCypressWindow();
 
 ## **`switchToMetamaskWindow`**
 
-Will focus on the Metamask window (tab)&#x20;
+Will focus on the Metamask window (tab)
 
 ```typescript
 function switchToMetamaskWindow(): Promise<boolean>;
@@ -159,7 +159,7 @@ function switchToMetamaskWindow(): Promise<boolean>;
 cy.switchToMetamaskWindow().should("be.true");
 ```
 
-### Playwright&#x20;
+### Playwright
 
 ```typescript
 import * as playwright from "@synthetixio/synpress/commands/playwright";
@@ -169,7 +169,7 @@ const switched = await playwright.switchToMetamaskWindow();
 
 ## **`switchToMetamaskNotification`**
 
-Will focus on the Metamask popup and will bring it to the top.&#x20;
+Will focus on the Metamask popup and will bring it to the top.
 
 ```typescript
 function switchToMetamaskNotification(): Promise<boolean>;
@@ -212,7 +212,7 @@ cy.getCurrentNetwork().then((network) => {
 });
 ```
 
-### Playwright&#x20;
+### Playwright
 
 ```typescript
 import { getCurrentNetwork } from "@synthetixio/synpress/helpers";
@@ -266,7 +266,7 @@ function addNetwork(network: {
 }): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -283,7 +283,7 @@ await metamask.addNetwork({
 
 #### **Preview**
 
-<figure><img src="../.gitbook/assets/add_network.png" alt=""><figcaption><p>Add network screen in MetaMask</p></figcaption></figure>
+<figure><img src=".gitbook/assets/add_network.png" alt=""><figcaption><p>Add network screen in MetaMask</p></figcaption></figure>
 
 ## **Change Metamask Network**
 
@@ -326,7 +326,7 @@ await metamask.changeNetwork();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/switch_network.png" alt="Switch network from Metamask"><figcaption><p>Switch network from Metamask</p></figcaption></figure>
+<figure><img src=".gitbook/assets/switch_network.png" alt="Switch network from Metamask"><figcaption><p>Switch network from Metamask</p></figcaption></figure>
 
 ## **Import Metamask Account**
 
@@ -353,7 +353,7 @@ cy.importMetamaskAccount(Cypress.env("E2E_PRIVATE_KEY"));
 function importAccount(pk: string): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -366,7 +366,7 @@ await metamask.importAccount(process.env.E2E_PRIVATE_KEY);
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/import_account.png" alt="Import account using private key"><figcaption><p>Import account using private key in Metamask</p></figcaption></figure>
+<figure><img src=".gitbook/assets/import_account.png" alt="Import account using private key"><figcaption><p>Import account using private key in Metamask</p></figcaption></figure>
 
 ## **Create Metamask Account**
 
@@ -390,7 +390,7 @@ cy.createMetamaskAccount("custom-wallet");
 function createAccount(accountName?: string): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -401,7 +401,7 @@ await metamask.createAccount();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/create_account.png" alt="Create new account in Metamask"><figcaption><p>Create new account in Metamask</p></figcaption></figure>
+<figure><img src=".gitbook/assets/create_account.png" alt="Create new account in Metamask"><figcaption><p>Create new account in Metamask</p></figcaption></figure>
 
 ## **Switch Metamask Account**
 
@@ -430,7 +430,7 @@ function switchAccount(
 ): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -441,7 +441,7 @@ await metamask.switchAccount(2);
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/switch_account.png" alt="Switch account from Metamask"><figcaption><p>Switch account from Metamask</p></figcaption></figure>
+<figure><img src=".gitbook/assets/switch_account.png" alt="Switch account from Metamask"><figcaption><p>Switch account from Metamask</p></figcaption></figure>
 
 ## **Get Metamask Wallet Address**
 
@@ -467,7 +467,7 @@ cy.getMetamaskWalletAddress().then((address) => {
 function getWalletAddress(): Promise<string>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -486,7 +486,7 @@ Disconnects Metamask wallet from last connected dApp.
 function disconnectMetamaskWalletFromDapp(): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.disconnectMetamaskWalletFromDapp().should("be.true");
@@ -498,7 +498,7 @@ cy.disconnectMetamaskWalletFromDapp().should("be.true");
 function disconnectWalletFromDapp(): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -508,7 +508,7 @@ await metamask.disconnectWalletFromDapp();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/disconnect_dapp.png" alt="Disconnect dApp from Metamask"><figcaption><p>Disconnect dApp from Metamask</p></figcaption></figure>
+<figure><img src=".gitbook/assets/disconnect_dapp.png" alt="Disconnect dApp from Metamask"><figcaption><p>Disconnect dApp from Metamask</p></figcaption></figure>
 
 ## **Disconnect Metamask Wallet From All dApps**
 
@@ -520,7 +520,7 @@ Disconnects Metamask wallet from all connected dApps.
 function disconnectMetamaskWalletFromAllDapps(): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.disconnectMetamaskWalletFromAllDapps().should("be.true");
@@ -532,7 +532,7 @@ cy.disconnectMetamaskWalletFromAllDapps().should("be.true");
 function disconnectWalletFromAllDapps(): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -542,19 +542,19 @@ await metamask.disconnectWalletFromAllDapps();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/disconnect_all_dapps.png" alt="Disconnect dApp from Metamask"><figcaption><p>Disconnect dApps from Metamask</p></figcaption></figure>
+<figure><img src=".gitbook/assets/disconnect_all_dapps.png" alt="Disconnect dApp from Metamask"><figcaption><p>Disconnect dApps from Metamask</p></figcaption></figure>
 
 ## **Confirm Metamask Signature Request**
 
 Confirm Metamask's permission to sign a "regular" message.
 
-### Cypress — `confirmMetamaskSignatureRequest`&#x20;
+### Cypress — `confirmMetamaskSignatureRequest`
 
 ```typescript
 function confirmMetamaskSignatureRequest(): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.confirmMetamaskSignatureRequest().should("be.true");
@@ -566,7 +566,7 @@ cy.confirmMetamaskSignatureRequest().should("be.true");
 function confirmSignatureRequest(): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -576,7 +576,7 @@ await metamask.confirmSignatureRequest();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/accept_sig_req.png" alt="Confirm signature request in Metamask"><figcaption><p>Confirm signature request in Metamask</p></figcaption></figure>
+<figure><img src=".gitbook/assets/accept_sig_req.png" alt="Confirm signature request in Metamask"><figcaption><p>Confirm signature request in Metamask</p></figcaption></figure>
 
 ## **Confirm Metamask Data Signature Request**
 
@@ -587,7 +587,7 @@ Confirm Metamask's permission to sign a Data "type 4" message.
 <pre class="language-typescript"><code class="lang-typescript"><strong>function confirmMetamaskDataSignatureRequest(): Chainable&#x3C;boolean>;
 </strong></code></pre>
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.confirmMetamaskDataSignatureRequest().should("be.true");
@@ -599,7 +599,7 @@ cy.confirmMetamaskDataSignatureRequest().should("be.true");
 function confirmDataSignatureRequest(): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -609,7 +609,7 @@ await metamask.confirmDataSignatureRequest();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/accept_data_sig_req.png" alt="Confirm data (type 4) signing request in Metamask"><figcaption><p>Confirm data (type 4) signing request in Metamask</p></figcaption></figure>
+<figure><img src=".gitbook/assets/accept_data_sig_req.png" alt="Confirm data (type 4) signing request in Metamask"><figcaption><p>Confirm data (type 4) signing request in Metamask</p></figcaption></figure>
 
 ## **Reject Metamask Signature Request**
 
@@ -620,7 +620,7 @@ Reject Metamask permission to sign a "regular" message.
 <pre class="language-typescript"><code class="lang-typescript"><strong>function rejectMetamaskSignatureRequest(): Chainable&#x3C;boolean>;
 </strong></code></pre>
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.rejectMetamaskSignatureRequest().should("be.true");
@@ -632,7 +632,7 @@ cy.rejectMetamaskSignatureRequest().should("be.true");
 function rejectSignatureRequest(): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -642,7 +642,7 @@ await metamask.rejectSignatureRequest();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/reject_sig_req.png" alt="Reject signature request in Metamask"><figcaption><p>Reject signature request from Metamask</p></figcaption></figure>
+<figure><img src=".gitbook/assets/reject_sig_req.png" alt="Reject signature request in Metamask"><figcaption><p>Reject signature request from Metamask</p></figcaption></figure>
 
 ## **Reject Metamask Data Signature Request**
 
@@ -654,7 +654,7 @@ Reject Metamask's permission to sign a Data "Type 4" message.
 function rejectMetamaskDataSignatureRequest(): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.rejectMetamaskDataSignatureRequest().should("be.true");
@@ -666,7 +666,7 @@ cy.rejectMetamaskDataSignatureRequest().should("be.true");
 function rejectDataSignatureRequest(): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -676,7 +676,7 @@ await metamask.rejectDataSignatureRequest();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/reject_data_sig_req.png" alt="Reject data (type 4) signing request in Metamask"><figcaption><p>Reject data (type 4) signing request in Metamask</p></figcaption></figure>
+<figure><img src=".gitbook/assets/reject_data_sig_req.png" alt="Reject data (type 4) signing request in Metamask"><figcaption><p>Reject data (type 4) signing request in Metamask</p></figcaption></figure>
 
 ## **Confirm Metamask Encryption Public Key Request**
 
@@ -688,7 +688,7 @@ Confirm Metamask's request for the public encryption key.
 function confirmMetamaskEncryptionPublicKeyRequest(): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.confirmMetamaskEncryptionPublicKeyRequest().should("be.true");
@@ -700,7 +700,7 @@ cy.confirmMetamaskEncryptionPublicKeyRequest().should("be.true");
 function confirmEncryptionPublicKeyRequest(): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -710,7 +710,7 @@ await metamask.confirmEncryptionPublicKeyRequest();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/accept_encryption_pub_key_req.png" alt="Request encryption public key in Metamask"><figcaption><p>Request encryption public key in Metamask</p></figcaption></figure>
+<figure><img src=".gitbook/assets/accept_encryption_pub_key_req.png" alt="Request encryption public key in Metamask"><figcaption><p>Request encryption public key in Metamask</p></figcaption></figure>
 
 ## **Reject Metamask Encryption Public Key Request**
 
@@ -722,7 +722,7 @@ Reject Metamask's request for the public encryption key.
 function rejectMetamaskEncryptionPublicKeyRequest(): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.rejectMetamaskEncryptionPublicKeyRequest().should("be.true");
@@ -734,7 +734,7 @@ cy.rejectMetamaskEncryptionPublicKeyRequest().should("be.true");
 function rejectEncryptionPublicKeyRequest(): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -744,7 +744,7 @@ await metamask.rejectEncryptionPublicKeyRequest();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/reject_encryption_pub_key_req.png" alt="Reject Metamask Encryption Public Key Request"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/reject_encryption_pub_key_req.png" alt="Reject Metamask Encryption Public Key Request"><figcaption></figcaption></figure>
 
 ## **Confirm Metamask Decryption Request**
 
@@ -756,7 +756,7 @@ Confirm Metamask's request to decrypt a message with the private key.
 function confirmMetamaskDecryptionRequest(): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.confirmMetamaskDecryptionRequest().should("be.true");
@@ -768,7 +768,7 @@ cy.confirmMetamaskDecryptionRequest().should("be.true");
 function confirmDecryptionRequest(): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -778,7 +778,7 @@ await metamask.confirmDecryptionRequest();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/accept_decrypt_req.png" alt="Accept decryption request in Metamask"><figcaption><p>Accept decryption request in Metamask</p></figcaption></figure>
+<figure><img src=".gitbook/assets/accept_decrypt_req.png" alt="Accept decryption request in Metamask"><figcaption><p>Accept decryption request in Metamask</p></figcaption></figure>
 
 ## **Reject Metamask Decryption Request**
 
@@ -790,7 +790,7 @@ Reject Metamask's request to decrypt the message with the private key.
 function rejectMetamaskDecryptionRequest(): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.rejectMetamaskDecryptionRequest().should("be.true");
@@ -802,7 +802,7 @@ cy.rejectMetamaskDecryptionRequest().should("be.true");
 function rejectDecryptionRequest(): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -812,7 +812,7 @@ await metamask.rejectDecryptionRequest();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/reject_decrypt_req.png" alt="Request decryption request in Metamask"><figcaption><p>Reject decryption request in Metamask</p></figcaption></figure>
+<figure><img src=".gitbook/assets/reject_decrypt_req.png" alt="Request decryption request in Metamask"><figcaption><p>Reject decryption request in Metamask</p></figcaption></figure>
 
 ## **Import Metamask Token**
 
@@ -861,7 +861,7 @@ function importToken(
 }>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -882,7 +882,7 @@ test("import token", async ({ page }) => {
 
 #### **Preview**
 
-<figure><img src="../.gitbook/assets/add_custom_token.png" alt="Import token in Metamask"><figcaption><p>Import token in Metamask</p></figcaption></figure>
+<figure><img src=".gitbook/assets/add_custom_token.png" alt="Import token in Metamask"><figcaption><p>Import token in Metamask</p></figcaption></figure>
 
 ## **Confirm Metamask To Add Token**
 
@@ -894,7 +894,7 @@ Confirm Metamask's request to add a token.
 function confirmMetamaskAddToken(): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.confirmMetamaskAddToken().should("be.true");
@@ -906,7 +906,7 @@ cy.confirmMetamaskAddToken().should("be.true");
 function confirmAddToken(): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -916,7 +916,7 @@ await metamask.confirmAddToken();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/accept_add_token_req.png" alt="Add tokens request to Metamask"><figcaption><p>Add tokens request to Metamask</p></figcaption></figure>
+<figure><img src=".gitbook/assets/accept_add_token_req.png" alt="Add tokens request to Metamask"><figcaption><p>Add tokens request to Metamask</p></figcaption></figure>
 
 ## **Reject Metamask Add Token Request**
 
@@ -928,7 +928,7 @@ Reject Metamask's request to add a token.
 function rejectMetamaskAddToken(): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.rejectMetamaskAddToken().should("be.true");
@@ -940,7 +940,7 @@ cy.rejectMetamaskAddToken().should("be.true");
 function rejectAddToken(): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -950,7 +950,7 @@ await metamask.rejectAddToken();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/reject_add_token_req.png" alt="Reject add token request in Metamask"><figcaption><p>Reject add token request in Metamask</p></figcaption></figure>
+<figure><img src=".gitbook/assets/reject_add_token_req.png" alt="Reject add token request in Metamask"><figcaption><p>Reject add token request in Metamask</p></figcaption></figure>
 
 ## **Confirm Metamask Permission To Spend**
 
@@ -964,7 +964,7 @@ function confirmMetamaskPermissionToSpend(
 ): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.confirmMetamaskPermissionToSpend().should("be.true");
@@ -976,7 +976,7 @@ cy.confirmMetamaskPermissionToSpend().should("be.true");
 function confirmPermissionToSpend(): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -986,7 +986,7 @@ await metamask.confirmPermissionToSpend();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/approve_permission_to_spend.png" alt="Approve permission to spend tokens"><figcaption><p>Approve permission to spend tokens</p></figcaption></figure>
+<figure><img src=".gitbook/assets/approve_permission_to_spend.png" alt="Approve permission to spend tokens"><figcaption><p>Approve permission to spend tokens</p></figcaption></figure>
 
 ## **Reject Metamask Permission To Spend**
 
@@ -998,7 +998,7 @@ Reject Metamask's permission to spend assets.
 function rejectMetamaskPermissionToSpend(): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.rejectMetamaskPermissionToSpend().should("be.true");
@@ -1012,7 +1012,7 @@ function rejectPermissionToSpend(): Promise<boolean>;
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/reject_permission_to_spend.png" alt="Reject permission to spend tokens in Metamask"><figcaption><p>Reject permission to spend tokens in MetaMask</p></figcaption></figure>
+<figure><img src=".gitbook/assets/reject_permission_to_spend.png" alt="Reject permission to spend tokens in Metamask"><figcaption><p>Reject permission to spend tokens in MetaMask</p></figcaption></figure>
 
 ## **Accept Metamask Access**
 
@@ -1050,7 +1050,7 @@ function acceptAccess(options?: {
 }): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -1065,7 +1065,7 @@ await playwright.acceptAccess({ allAccounts: true });
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/accept_metamask_access.png" alt="Accept Metamask access"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/accept_metamask_access.png" alt="Accept Metamask access"><figcaption></figcaption></figure>
 
 ## **Confirm Metamask Transaction**
 
@@ -1144,7 +1144,7 @@ function confirmTransaction(
 }>;
 ```
 
-#### Example&#x20;
+#### Example
 
 <pre class="language-typescript"><code class="lang-typescript">import * as metamask from "@synthetixio/synpress/commands/metamask";
 
@@ -1161,7 +1161,7 @@ await metamask.confirmMetamaskTransaction("site");
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/confirm_tx.png" alt="Confirm Metamask transaction"><figcaption><p>Confirm Metamask transaction</p></figcaption></figure>
+<figure><img src=".gitbook/assets/confirm_tx.png" alt="Confirm Metamask transaction"><figcaption><p>Confirm Metamask transaction</p></figcaption></figure>
 
 ## **Reject Metamask Transaction**
 
@@ -1171,7 +1171,7 @@ await metamask.confirmMetamaskTransaction("site");
 function rejectMetamaskTransaction(): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.rejectMetamaskTransaction().should("be.true");
@@ -1183,7 +1183,7 @@ cy.rejectMetamaskTransaction().should("be.true");
 function rejectTransaction(): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -1193,7 +1193,7 @@ await metamask.rejectTransaction();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/reject_tx.png" alt="Reject Metamask transaction"><figcaption><p>Reject Metamask transaction</p></figcaption></figure>
+<figure><img src=".gitbook/assets/reject_tx.png" alt="Reject Metamask transaction"><figcaption><p>Reject Metamask transaction</p></figcaption></figure>
 
 ## **Allow Metamask To Add Network**
 
@@ -1218,7 +1218,7 @@ cy.allowMetamaskToAddNetwork().should("be.true");
 function allowToAddNetwork(waitForEvent?: string): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -1228,7 +1228,7 @@ await metamask.allowToAddNetwork();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/accept_switch_network_req.png" alt="Allow dApp to add a network in Metamask"><figcaption><p>Allow dApp to add a network in Metamask</p></figcaption></figure>
+<figure><img src=".gitbook/assets/accept_switch_network_req.png" alt="Allow dApp to add a network in Metamask"><figcaption><p>Allow dApp to add a network in Metamask</p></figcaption></figure>
 
 ## **Reject Metamask To Add Network**
 
@@ -1240,7 +1240,7 @@ Reject dApp to add a new network in Metamask.
 function rejectMetamaskToAddNetwork(): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.rejectMetamaskToAddNetwork().should("be.true");
@@ -1252,7 +1252,7 @@ cy.rejectMetamaskToAddNetwork().should("be.true");
 function rejectToAddNetwork(): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -1262,7 +1262,7 @@ await metamask.rejectToAddNetwork();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/reject_add_network_req.png" alt="Reject dApp to add a network in Metamask"><figcaption><p>Reject dApp to add a network in Metamask</p></figcaption></figure>
+<figure><img src=".gitbook/assets/reject_add_network_req.png" alt="Reject dApp to add a network in Metamask"><figcaption><p>Reject dApp to add a network in Metamask</p></figcaption></figure>
 
 ## **Allow Metamask to switch to another network**
 
@@ -1274,7 +1274,7 @@ Allow the dApp to switch the network in Metamask.
 function allowMetamaskToSwitchNetwork(): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.allowMetamaskToSwitchNetwork().should("be.true");
@@ -1286,7 +1286,7 @@ cy.allowMetamaskToSwitchNetwork().should("be.true");
 function allowToSwitchNetwork(): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -1296,7 +1296,7 @@ await metamask.allowToSwitchNetwork();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/accept_switch_network_req.png" alt="Allow the dApp to switch the network in Metamask"><figcaption><p>Allow the dApp to switch the network in Metamask</p></figcaption></figure>
+<figure><img src=".gitbook/assets/accept_switch_network_req.png" alt="Allow the dApp to switch the network in Metamask"><figcaption><p>Allow the dApp to switch the network in Metamask</p></figcaption></figure>
 
 ## **Reject Metamask To Switch Network**
 
@@ -1308,7 +1308,7 @@ Reject the dApp to switch the network in Metamask.
 function rejectMetamaskToSwitchNetwork(): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.rejectMetamaskToSwitchNetwork().should("be.true");
@@ -1320,7 +1320,7 @@ cy.rejectMetamaskToSwitchNetwork().should("be.true");
 function rejectToSwitchNetwork(): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -1330,7 +1330,7 @@ await metamask.rejectToSwitchNetwork();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/reject_switch_network_req.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/reject_switch_network_req.png" alt=""><figcaption></figcaption></figure>
 
 ## **Allow Metamask To Add and Switch Network**
 
@@ -1342,7 +1342,7 @@ Allow the dApp to add a new network in Metamask and switch to it.
 function allowMetamaskToAddAndSwitchNetwork(): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.allowMetamaskToAddAndSwitchNetwork().should("be.true");
@@ -1354,7 +1354,7 @@ cy.allowMetamaskToAddAndSwitchNetwork().should("be.true");
 function allowToAddAndSwitchNetwork(): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -1382,7 +1382,7 @@ cy.unlockMetamask("my_password");
 function unlock(password: string): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -1392,7 +1392,7 @@ await metamask.unlock("my_password");
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/unlock_metamask.png" alt="Unlock Metamask"><figcaption><p>Unlock Metamask</p></figcaption></figure>
+<figure><img src=".gitbook/assets/unlock_metamask.png" alt="Unlock Metamask"><figcaption><p>Unlock Metamask</p></figcaption></figure>
 
 ## **Fetch Metamask Wallet Address**
 
@@ -1416,7 +1416,7 @@ cy.fetchMetamaskWalletAddress().then((address) => cy.log(address));
 function fetchWalletAddress(): Promise<string>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -1486,7 +1486,7 @@ function initialSetup(browser: BrowserType<{}> | null, {
 }): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 <pre class="language-typescript"><code class="lang-typescript">import {chromium} from "@playwright/test";
 import { initialSetup } from "@synthetixio/synpress/commands/metamask";
@@ -1569,7 +1569,7 @@ function activateAdvancedGasControlInMetamask(
 ): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 <pre class="language-typescript"><code class="lang-typescript"><strong>cy.activateAdvancedGasControlInMetamask().should('be.true');
 </strong></code></pre>
@@ -1580,7 +1580,7 @@ function activateAdvancedGasControlInMetamask(
 function activateAdvancedGasControl(skipSetup?: boolean): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -1598,7 +1598,7 @@ Activate the ability (in Metamask settings) to show hex data while doing transac
 function activateShowHexDataInMetamask(skipSetup?: boolean): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.activateShowHexDataInMetamask().should("be.true");
@@ -1610,7 +1610,7 @@ cy.activateShowHexDataInMetamask().should("be.true");
 function activateShowHexData(skipSetup?: boolean): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -1620,7 +1620,7 @@ await metamask.activateShowHexData();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/show_hex_data.png" alt="Show hex data option in Metamask settings"><figcaption><p>Show hex data option in Metamask settings</p></figcaption></figure>
+<figure><img src=".gitbook/assets/show_hex_data (1).png" alt="Show hex data option in Metamask settings"><figcaption><p>Show hex data option in Metamask settings</p></figcaption></figure>
 
 ### **Activate Testnet Conversion In Metamask**
 
@@ -1634,7 +1634,7 @@ function activateTestnetConversionInMetamask(
 ): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.activateTestnetConversionInMetamask().should("be.true");
@@ -1646,7 +1646,7 @@ cy.activateTestnetConversionInMetamask().should("be.true");
 function activateTestnetConversion(): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -1656,7 +1656,7 @@ await metamask.activateTestnetConversion();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/show_conversion_on_test_networks.png" alt="Show conversion on test networks option in Metamask settings"><figcaption><p>Show conversion on test networks option in Metamask settings</p></figcaption></figure>
+<figure><img src=".gitbook/assets/show_conversion_on_test_networks.png" alt="Show conversion on test networks option in Metamask settings"><figcaption><p>Show conversion on test networks option in Metamask settings</p></figcaption></figure>
 
 ### **Activate Show Testnet Networks In Metamask**
 
@@ -1670,7 +1670,7 @@ function activateShowTestnetNetworksInMetamask(
 ): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.activateShowTestnetNetworksInMetamask().should("be.true");
@@ -1682,7 +1682,7 @@ cy.activateShowTestnetNetworksInMetamask().should("be.true");
 function activateShowTestnetNetworks(skipSetup?: boolean): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -1692,7 +1692,7 @@ await metamask.activateShowTestnetNetworks();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/show_test_networks.png" alt="Show test networks option in Metamask settings"><figcaption><p>Show test networks option in Metamask settings</p></figcaption></figure>
+<figure><img src=".gitbook/assets/show_test_networks.png" alt="Show test networks option in Metamask settings"><figcaption><p>Show test networks option in Metamask settings</p></figcaption></figure>
 
 ### **Activate Custom Nonce In Metamask**
 
@@ -1704,7 +1704,7 @@ Activate the ability (in Metamask settings) to specify custom nonce while doing 
 function activateCustomNonceInMetamask(skipSetup?: boolean): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.activateCustomNonceInMetamask().should("be.true");
@@ -1716,7 +1716,7 @@ cy.activateCustomNonceInMetamask().should("be.true");
 function activateCustomNonce(skipSetup?: boolean): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -1726,7 +1726,7 @@ await metamask.activateCustomNonce();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/customize_transaction_nonce.png" alt="Customize transaction nonce option in Metamask settings"><figcaption><p>Customize transaction nonce option in Metamask settings</p></figcaption></figure>
+<figure><img src=".gitbook/assets/customize_transaction_nonce (1).png" alt="Customize transaction nonce option in Metamask settings"><figcaption><p>Customize transaction nonce option in Metamask settings</p></figcaption></figure>
 
 ### **Activate Dismiss Backup Reminder In Metamask**
 
@@ -1740,7 +1740,7 @@ function activateDismissBackupReminderInMetamask(
 ): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.activateDismissBackupReminderInMetamask().should("be.true");
@@ -1752,7 +1752,7 @@ cy.activateDismissBackupReminderInMetamask().should("be.true");
 function activateDismissBackupReminder(): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -1762,7 +1762,7 @@ await metamask.activateDismissBackupReminder();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/dismiss_secret_recovery_phrase_backup_reminder.png" alt="Dismiss secret recovery phrase backup reminder option in Metamask settings"><figcaption><p>Dismiss secret recovery phrase backup reminder option in Metamask settings</p></figcaption></figure>
+<figure><img src=".gitbook/assets/dismiss_secret_recovery_phrase_backup_reminder (1).png" alt="Dismiss secret recovery phrase backup reminder option in Metamask settings"><figcaption><p>Dismiss secret recovery phrase backup reminder option in Metamask settings</p></figcaption></figure>
 
 ### **Activate `eth_sign` Requests In Metamask**
 
@@ -1773,7 +1773,7 @@ Activate eth sign requests in Metamask settings.
 <pre class="language-typescript"><code class="lang-typescript"><strong>function activateEthSignRequestsInMetamask(skipSetup?: boolean): Chainable&#x3C;boolean>;
 </strong></code></pre>
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.activateEthSignRequestsInMetamask().should("be.true");
@@ -1785,7 +1785,7 @@ cy.activateEthSignRequestsInMetamask().should("be.true");
 function activateEthSignRequests(skipSetup?: boolean): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -1795,7 +1795,7 @@ await metamask.activateEthSignRequests();
 
 #### Preview
 
-<figure><img src="../.gitbook/assets/toggle_eth_sign_req.png" alt="Toggle eth_sign requests option in Metamask settings"><figcaption><p>Toggle eth_sign requests option in Metamask settings</p></figcaption></figure>
+<figure><img src=".gitbook/assets/toggle_eth_sign_req.png" alt="Toggle eth_sign requests option in Metamask settings"><figcaption><p>Toggle eth_sign requests option in Metamask settings</p></figcaption></figure>
 
 ### **Activate Improved Token Allowance In Metamask**
 
@@ -1809,7 +1809,7 @@ function activateImprovedTokenAllowanceInMetamask(
 ): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.activateImprovedTokenAllowanceInMetamask().should("be.true");
@@ -1821,7 +1821,7 @@ cy.activateImprovedTokenAllowanceInMetamask().should("be.true");
 function activateImprovedTokenAllowance(skipSetup?: boolean): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -1839,7 +1839,7 @@ Reset the Metamask account state in settings.
 function resetMetamaskAccount(): Chainable<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 cy.resetMetamaskAccount().should("be.true");
@@ -1851,7 +1851,7 @@ cy.resetMetamaskAccount().should("be.true");
 function resetAccount(): Promise<boolean>;
 ```
 
-#### Example&#x20;
+#### Example
 
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
@@ -1861,4 +1861,4 @@ await metamask.resetAccount();
 
 #### Preview
 
-<figure><img src="broken-reference" alt="Reset Metamask account"><figcaption><p>Reset Metamask account</p></figcaption></figure>
+<figure><img src="synpress-api/broken-reference" alt="Reset Metamask account"><figcaption><p>Reset Metamask account</p></figcaption></figure>
