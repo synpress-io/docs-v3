@@ -6,7 +6,9 @@ description: List of all Cypress/Playwright APIs used in Synpress
 
 ## Initialize Playwright
 
-### Cypress — `cy.initPlaywright()`
+{% tabs %}
+{% tab title="Cypress" %}
+### `cy.initPlaywright()`
 
 Connect Playwright with Cypress instance.
 
@@ -19,8 +21,10 @@ function initPlaywright(): Chainable<boolean>;
 ```javascript
 cy.initPlaywright();
 ```
+{% endtab %}
 
-### Playwright — `init`
+{% tab title="Playwright" %}
+### `init`
 
 Initialize Playwright instance.
 
@@ -35,22 +39,36 @@ import * as playwright from "@synthetixio/synpress/commands/playwright";
 
 const connected = await playwright.init();
 ```
+{% endtab %}
+{% endtabs %}
 
 ## **`assignWindows`**
 
 Assign currently open tabs with Playwright.
 
+{% tabs %}
+{% tab title="Cypress" %}
+### Definition
+
 ```typescript
 function assignWindows(): Chainable<boolean>;
 ```
 
-### **Cypress**
+#### Example
 
 ```typescript
 cy.assignWindows().should("be.true");
 ```
+{% endtab %}
 
-### **Playwright**
+{% tab title="Playwright" %}
+### Definition
+
+```typescript
+function assignWindows(): Promise<boolean>;
+```
+
+#### Example
 
 ```typescript
 import * as playwright from "@synthetixio/synpress/commands/playwright";
@@ -58,140 +76,230 @@ import * as playwright from "@synthetixio/synpress/commands/playwright";
 const connected = await playwright.init();
 const assigned = await playwright.assignWindows();
 ```
+{% endtab %}
+{% endtabs %}
 
 ## **`assignActiveTabName`**
 
 Assigns currently active tab.
 
+{% tabs %}
+{% tab title="Cypress" %}
+### Definition
+
 ```typescript
 function assignActiveTabName(tabName: string): Chainable<boolean>;
 ```
 
-### Cypress
+#### Example
 
 ```javascript
 cy.assignActiveTabName("my_tab");
 ```
+{% endtab %}
 
-### Playwright
+{% tab title="Playwright" %}
+### Definition
+
+```typescript
+function assignActiveTabName(tabName: string): Promise<boolean>;
+```
+
+#### Example
 
 ```typescript
 import * as playwright from "@synthetixio/synpress/commands/playwright";
 
 await playwright.assignActiveTabName("my_tab");
 ```
+{% endtab %}
+{% endtabs %}
 
 ## **`isMetamaskWindowActive`**
 
 Checks if the currently active window is Metamask.
 
+{% tabs %}
+{% tab title="First Tab" %}
+### Definition
+
 <pre class="language-typescript"><code class="lang-typescript"><strong>function isMetamaskWindowActive(): Chainable&#x3C;boolean>;
 </strong></code></pre>
 
-### Cypress
+#### Example
 
 ```javascript
 cy.isMetamaskWindowActive().should("be.true");
 ```
+{% endtab %}
 
-### Playwright
+{% tab title="Playwright" %}
+### Definition
+
+```typescript
+function isMetamaskWindowActive(): Promise<boolean>;
+```
+
+#### Example
 
 <pre class="language-typescript"><code class="lang-typescript">import * as playwright from "@synthetixio/synpress/commands/playwright";
 
 <strong>const isActive = await playwright.isMetamaskWindowActive();
 </strong></code></pre>
+{% endtab %}
+{% endtabs %}
 
 ## **`isCypressWindowActive`**
 
 Checks if the currently active window is Cypress.
 
+{% tabs %}
+{% tab title="First Tab" %}
+### Definition
+
 ```typescript
 function isCypressWindowActive(): Chainable<boolean>;
 ```
 
-### Cypress
+#### Example
 
 ```javascript
 cy.isCypressWindowActive();
 ```
+{% endtab %}
 
-### Playwright
+{% tab title="Playwright" %}
+### Definition
+
+```typescript
+function isCypressWindowActive(): Promise<boolean>;
+```
+
+#### Example
 
 ```typescript
 import * as playwright from "@synthetixio/synpress/commands/playwright";
 
 const isActive = await playwright.isCypressWindowActive();
 ```
+{% endtab %}
+{% endtabs %}
 
 ## **`switchToCypressWindow`**
 
 Will focus on the Cypress window (tab) (the dApp)
 
+{% tabs %}
+{% tab title="Cypress" %}
+### Definition
+
 ```typescript
-function switchToCypressWindow(): Promise<boolean>;
+function switchToCypressWindow(): Chainable<boolean>;
 ```
 
-### **Cypress**
+#### Example
 
 ```javascript
 cy.switchToCypressWindow().should("be.true");
 ```
+{% endtab %}
 
-### Playwright
+{% tab title="Playwright" %}
+### Definition
+
+```typescript
+function switchToCypressWindow(): Promise<boolean>;
+```
+
+#### Example
 
 ```typescript
 import * as playwright from "@synthetixio/synpress/commands/playwright";
 
 const switched = await playwright.switchToCypressWindow();
 ```
+{% endtab %}
+{% endtabs %}
 
 ## **`switchToMetamaskWindow`**
 
 Will focus on the Metamask window (tab)
 
+{% tabs %}
+{% tab title="Cypress" %}
+### Definition
+
 ```typescript
-function switchToMetamaskWindow(): Promise<boolean>;
+function switchToMetamaskWindow(): Chainable<boolean>;
 ```
 
-### Cypress
+#### Example
 
 ```typescript
 cy.switchToMetamaskWindow().should("be.true");
 ```
+{% endtab %}
 
-### Playwright
+{% tab title="Playwright" %}
+### Definition
+
+```typescript
+function switchToMetamaskWindow(): Promise<boolean>;
+```
+
+#### Example
 
 ```typescript
 import * as playwright from "@synthetixio/synpress/commands/playwright";
 
 const switched = await playwright.switchToMetamaskWindow();
 ```
+{% endtab %}
+{% endtabs %}
 
 ## **`switchToMetamaskNotification`**
 
 Will focus on the Metamask popup and will bring it to the top.
 
+{% tabs %}
+{% tab title="Cypress" %}
+### Definition
+
 ```typescript
-function switchToMetamaskNotification(): Promise<boolean>;
+function switchToMetamaskNotification(): Chainable<boolean>;
 ```
 
-### Cypress
+#### Example
 
 ```javascript
 cy.switchToMetamaskNotification().should("be.true");
 ```
+{% endtab %}
 
-### Playwright
+{% tab title="Playwright" %}
+### Definition
+
+```typescript
+function switchToMetamaskNotification(): Promise<boolean>;
+```
+
+#### Example
 
 ```typescript
 import * as playwright from "@synthetixio/synpress/commands/playwright";
 
 const switched = await playwright.switchToMetamaskNotification();
 ```
+{% endtab %}
+{% endtabs %}
 
 ## `getCurrentNetwork`
 
 Get current network info from Metamask
+
+{% tabs %}
+{% tab title="Cypress" %}
+### Definition
 
 ```typescript
 function getCurrentNetwork(): {
@@ -202,7 +310,7 @@ function getCurrentNetwork(): {
 };
 ```
 
-### Cypress
+#### Example
 
 ```typescript
 cy.getCurrentNetwork().then((network) => {
@@ -211,8 +319,21 @@ cy.getCurrentNetwork().then((network) => {
   expect(network.isTestnet).to.be.true;
 });
 ```
+{% endtab %}
 
-### Playwright
+{% tab title="Playwright" %}
+### Definition
+
+```typescript
+function getCurrentNetwork(): {
+  networkName: string;
+  networkDisplayName: string;
+  networkId: number;
+  isTestnet: boolean;
+};
+```
+
+#### Example
 
 ```typescript
 import { getCurrentNetwork } from "@synthetixio/synpress/helpers";
@@ -222,12 +343,16 @@ expect(network.networkName).to.be.equal("sepolia");
 expect(network.networkId).to.be.equal(11155111);
 expect(network.isTestnet).to.be.true;
 ```
+{% endtab %}
+{% endtabs %}
 
 ## **Add Metamask Network**
 
 Add network in MetaMask (and switch to the newly added network).
 
-### Cypress — `addMetamaskNetwork`
+{% tabs %}
+{% tab title="Cypress" %}
+### `addMetamaskNetwork`
 
 ```typescript
 function addMetamaskNetwork(network: {
@@ -252,8 +377,10 @@ cy.addMetamaskNetwork({
   isTestnet: false,
 });
 ```
+{% endtab %}
 
-### Playwright — `addNetwork`
+{% tab title="Playwright" %}
+### `addNetwork`
 
 ```typescript
 function addNetwork(network: {
@@ -280,6 +407,8 @@ await metamask.addNetwork({
   isTestnet: false,
 });
 ```
+{% endtab %}
+{% endtabs %}
 
 #### **Preview**
 
@@ -293,7 +422,9 @@ Predefined networks: `mainnet`, `goerli`, `sepolia` , `localhost`
 
 If no network is provided, it will default to using the `NETWORK_NAME` environment variable. If not, it will default to `goerli` the network.
 
-### Cypress — `changeMetamaskNetwork`
+{% tabs %}
+{% tab title="Cypress" %}
+### `changeMetamaskNetwork`
 
 <pre class="language-typescript"><code class="lang-typescript"><strong>function changeMetamaskNetwork(networkName?: string): Chainable&#x3C;boolean>;
 </strong></code></pre>
@@ -307,8 +438,10 @@ cy.changeMetamaskNetwork("mainnet");
 cy.changeMetamaskNetwork("optimism network");
 cy.changeMetamaskNetwork("sepolia");
 ```
+{% endtab %}
 
-### Playwright — `changeNetwork`
+{% tab title="Playwright" %}
+### `changeNetwork`
 
 ```typescript
 function changeNetwork(networkName?: string): Promise<boolean>;
@@ -323,6 +456,8 @@ await metamask.changeNetwork("mainnet");
 // Switch to the network defined in `process.env.NETWORK_NAME` or default to `goerli`
 await metamask.changeNetwork();
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -332,7 +467,9 @@ await metamask.changeNetwork();
 
 Import a new account in Metamask using a private key.
 
-### Cypress — `importMetamaskAccount`
+{% tabs %}
+{% tab title="Cypress" %}
+### `importMetamaskAccount`
 
 ```typescript
 function importMetamaskAccount(pk: string): Chainable<boolean>;
@@ -346,8 +483,10 @@ cy.importMetamaskAccount(
 );
 cy.importMetamaskAccount(Cypress.env("E2E_PRIVATE_KEY"));
 ```
+{% endtab %}
 
-### Playwright — `importAccount`
+{% tab title="Playwright" %}
+### `importAccount`
 
 ```typescript
 function importAccount(pk: string): Promise<boolean>;
@@ -363,6 +502,8 @@ await metamask.importAccount(
 );
 await metamask.importAccount(process.env.E2E_PRIVATE_KEY);
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -370,7 +511,9 @@ await metamask.importAccount(process.env.E2E_PRIVATE_KEY);
 
 ## **Create Metamask Account**
 
-### **Cypress** — `createMetamaskAccount`
+{% tabs %}
+{% tab title="Cypress" %}
+### `createMetamaskAccount`
 
 ```typescript
 function createMetamaskAccount(accountName?: string): Chainable<boolean>;
@@ -383,8 +526,10 @@ function createMetamaskAccount(accountName?: string): Chainable<boolean>;
 cy.createMetamaskAccount();
 cy.createMetamaskAccount("custom-wallet");
 ```
+{% endtab %}
 
-### Playwright — `createAccount`
+{% tab title="Playwright" %}
+### `createAccount`
 
 ```typescript
 function createAccount(accountName?: string): Promise<boolean>;
@@ -398,6 +543,8 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 await metamask.createAccount("my_account");
 await metamask.createAccount();
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -405,7 +552,9 @@ await metamask.createAccount();
 
 ## **Switch Metamask Account**
 
-### **Cypress** — `switchMetamaskAccount`
+{% tabs %}
+{% tab title="Cypress" %}
+### `switchMetamaskAccount`
 
 ```typescript
 function switchMetamaskAccount(
@@ -421,8 +570,10 @@ cy.switchMetamaskAccount(2);
 // Switch using the account name
 cy.switchMetamaskAccount("account 1");
 ```
+{% endtab %}
 
-### Playwright — `switchAccount`
+{% tab title="Playwright" %}
+### `switchAccount`
 
 ```typescript
 function switchAccount(
@@ -438,6 +589,8 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 await metamask.switchAccount("my_account");
 await metamask.switchAccount(2);
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -447,7 +600,9 @@ await metamask.switchAccount(2);
 
 Get the current wallet address of Metamask wallet.
 
-### Cypress — `getMetamaskWalletAddress`
+{% tabs %}
+{% tab title="Cypress" %}
+### `getMetamaskWalletAddress`
 
 ```typescript
 function getMetamaskWalletAddress(): Chainable<string>;
@@ -460,8 +615,10 @@ cy.getMetamaskWalletAddress().then((address) => {
   expect(address).to.be.equal("0x70997970C51812dc3A010C7d01b50e0d17dc79C8");
 });
 ```
+{% endtab %}
 
-### Playwright — `getWalletAddress`
+{% tab title="Playwright" %}
+### `getWalletAddress`
 
 ```typescript
 function getWalletAddress(): Promise<string>;
@@ -475,12 +632,16 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 const walletAddress = await metamask.getWalletAddress();
 expect(walletAddress).to.be.equal("0x70997970C51812dc3A010C7d01b50e0d17dc79C8");
 ```
+{% endtab %}
+{% endtabs %}
 
 ## **Disconnect Metamask Wallet From dApp**
 
 Disconnects Metamask wallet from last connected dApp.
 
-### Cypress — **`disconnectMetamaskWalletFromDapp`**
+{% tabs %}
+{% tab title="Cypress" %}
+### **`disconnectMetamaskWalletFromDapp`**
 
 ```typescript
 function disconnectMetamaskWalletFromDapp(): Chainable<boolean>;
@@ -491,8 +652,10 @@ function disconnectMetamaskWalletFromDapp(): Chainable<boolean>;
 ```typescript
 cy.disconnectMetamaskWalletFromDapp().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `disconnectWalletFromDapp`
+{% tab title="Playwright" %}
+### `disconnectWalletFromDapp`
 
 ```typescript
 function disconnectWalletFromDapp(): Promise<boolean>;
@@ -505,6 +668,8 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 await metamask.disconnectWalletFromDapp();
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -514,7 +679,9 @@ await metamask.disconnectWalletFromDapp();
 
 Disconnects Metamask wallet from all connected dApps.
 
-### Cypress — `disconnectMetamaskWalletFromAllDapps`
+{% tabs %}
+{% tab title="Cypress" %}
+### `disconnectMetamaskWalletFromAllDapps`
 
 ```typescript
 function disconnectMetamaskWalletFromAllDapps(): Chainable<boolean>;
@@ -525,8 +692,10 @@ function disconnectMetamaskWalletFromAllDapps(): Chainable<boolean>;
 ```typescript
 cy.disconnectMetamaskWalletFromAllDapps().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `disconnectWalletFromAllDapps`
+{% tab title="Playwright" %}
+### `disconnectWalletFromAllDapps`
 
 ```typescript
 function disconnectWalletFromAllDapps(): Promise<boolean>;
@@ -537,8 +706,10 @@ function disconnectWalletFromAllDapps(): Promise<boolean>;
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
 
-await metamask.disconnectWalletFromAllDapps();
+await metamask.disconnectWalletFromAllDapps();tab
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -548,7 +719,9 @@ await metamask.disconnectWalletFromAllDapps();
 
 Confirm Metamask's permission to sign a "regular" message.
 
-### Cypress — `confirmMetamaskSignatureRequest`
+{% tabs %}
+{% tab title="Cypress" %}
+### `confirmMetamaskSignatureRequest`
 
 ```typescript
 function confirmMetamaskSignatureRequest(): Chainable<boolean>;
@@ -559,8 +732,10 @@ function confirmMetamaskSignatureRequest(): Chainable<boolean>;
 ```typescript
 cy.confirmMetamaskSignatureRequest().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `confirmSignatureRequest`
+{% tab title="Playwright" %}
+### `confirmSignatureRequest`
 
 ```typescript
 function confirmSignatureRequest(): Promise<boolean>;
@@ -573,6 +748,8 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 await metamask.confirmSignatureRequest();
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -582,7 +759,9 @@ await metamask.confirmSignatureRequest();
 
 Confirm Metamask's permission to sign a Data "type 4" message.
 
-### Cypress — `confirmMetamaskDataSignatureRequest`
+{% tabs %}
+{% tab title="Cypress" %}
+### `confirmMetamaskDataSignatureRequest`
 
 <pre class="language-typescript"><code class="lang-typescript"><strong>function confirmMetamaskDataSignatureRequest(): Chainable&#x3C;boolean>;
 </strong></code></pre>
@@ -592,8 +771,10 @@ Confirm Metamask's permission to sign a Data "type 4" message.
 ```typescript
 cy.confirmMetamaskDataSignatureRequest().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `confirmDataSignatureRequest`
+{% tab title="Playwright" %}
+### `confirmDataSignatureRequest`
 
 ```typescript
 function confirmDataSignatureRequest(): Promise<boolean>;
@@ -606,6 +787,8 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 await metamask.confirmDataSignatureRequest();
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -615,7 +798,9 @@ await metamask.confirmDataSignatureRequest();
 
 Reject Metamask permission to sign a "regular" message.
 
-### Cypress — `rejectMetamaskSignatureRequest`
+{% tabs %}
+{% tab title="Cypress" %}
+### `rejectMetamaskSignatureRequest`
 
 <pre class="language-typescript"><code class="lang-typescript"><strong>function rejectMetamaskSignatureRequest(): Chainable&#x3C;boolean>;
 </strong></code></pre>
@@ -625,8 +810,10 @@ Reject Metamask permission to sign a "regular" message.
 ```typescript
 cy.rejectMetamaskSignatureRequest().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `rejectSignatureRequest`
+{% tab title="Playwright" %}
+### `rejectSignatureRequest`
 
 ```typescript
 function rejectSignatureRequest(): Promise<boolean>;
@@ -639,6 +826,8 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 await metamask.rejectSignatureRequest();
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -648,7 +837,9 @@ await metamask.rejectSignatureRequest();
 
 Reject Metamask's permission to sign a Data "Type 4" message.
 
-### Cypress — `rejectMetamaskDataSignatureRequest`
+{% tabs %}
+{% tab title="Cypress" %}
+### `rejectMetamaskDataSignatureRequest`
 
 ```typescript
 function rejectMetamaskDataSignatureRequest(): Chainable<boolean>;
@@ -659,8 +850,10 @@ function rejectMetamaskDataSignatureRequest(): Chainable<boolean>;
 ```typescript
 cy.rejectMetamaskDataSignatureRequest().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `rejectDataSignatureRequest`
+{% tab title="Playwright" %}
+### `rejectDataSignatureRequest`
 
 ```typescript
 function rejectDataSignatureRequest(): Promise<boolean>;
@@ -673,6 +866,8 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 await metamask.rejectDataSignatureRequest();
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -682,7 +877,9 @@ await metamask.rejectDataSignatureRequest();
 
 Confirm Metamask's request for the public encryption key.
 
-### Cypress — `confirmMetamaskEncryptionPublicKeyRequest`
+{% tabs %}
+{% tab title="Cypress" %}
+### `confirmMetamaskEncryptionPublicKeyRequest`
 
 ```typescript
 function confirmMetamaskEncryptionPublicKeyRequest(): Chainable<boolean>;
@@ -693,8 +890,10 @@ function confirmMetamaskEncryptionPublicKeyRequest(): Chainable<boolean>;
 ```typescript
 cy.confirmMetamaskEncryptionPublicKeyRequest().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `confirmEncryptionPublicKeyRequest`
+{% tab title="Playwright" %}
+### `confirmEncryptionPublicKeyRequest`
 
 ```typescript
 function confirmEncryptionPublicKeyRequest(): Promise<boolean>;
@@ -705,8 +904,10 @@ function confirmEncryptionPublicKeyRequest(): Promise<boolean>;
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
 
-await metamask.confirmEncryptionPublicKeyRequest();
+await metamask.confirmEncryptionPublicKeyRequest();s
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -716,7 +917,9 @@ await metamask.confirmEncryptionPublicKeyRequest();
 
 Reject Metamask's request for the public encryption key.
 
-### Cypress — `rejectMetamaskEncryptionPublicKeyRequest`
+{% tabs %}
+{% tab title="Cypress" %}
+### `rejectMetamaskEncryptionPublicKeyRequest`
 
 ```typescript
 function rejectMetamaskEncryptionPublicKeyRequest(): Chainable<boolean>;
@@ -727,8 +930,10 @@ function rejectMetamaskEncryptionPublicKeyRequest(): Chainable<boolean>;
 ```typescript
 cy.rejectMetamaskEncryptionPublicKeyRequest().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `rejectEncryptionPublicKeyRequest`
+{% tab title="Playwright" %}
+### `rejectEncryptionPublicKeyRequest`
 
 ```typescript
 function rejectEncryptionPublicKeyRequest(): Promise<boolean>;
@@ -741,6 +946,8 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 await metamask.rejectEncryptionPublicKeyRequest();
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -750,7 +957,9 @@ await metamask.rejectEncryptionPublicKeyRequest();
 
 Confirm Metamask's request to decrypt a message with the private key.
 
-### Cypress — `confirmMetamaskDecryptionRequest`
+{% tabs %}
+{% tab title="Cypress" %}
+### `confirmMetamaskDecryptionRequest`
 
 ```typescript
 function confirmMetamaskDecryptionRequest(): Chainable<boolean>;
@@ -761,8 +970,10 @@ function confirmMetamaskDecryptionRequest(): Chainable<boolean>;
 ```typescript
 cy.confirmMetamaskDecryptionRequest().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `confirmDecryptionRequest`
+{% tab title="Playwright" %}
+### `confirmDecryptionRequest`
 
 ```typescript
 function confirmDecryptionRequest(): Promise<boolean>;
@@ -773,8 +984,10 @@ function confirmDecryptionRequest(): Promise<boolean>;
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
 
-await metamask.confirmDecryptionRequest();
+await metamask.confirmDecryptionRequest();ta
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -784,7 +997,9 @@ await metamask.confirmDecryptionRequest();
 
 Reject Metamask's request to decrypt the message with the private key.
 
-### Cypress — `rejectMetamaskDecryptionRequest`
+{% tabs %}
+{% tab title="Cypress" %}
+### `rejectMetamaskDecryptionRequest`
 
 ```typescript
 function rejectMetamaskDecryptionRequest(): Chainable<boolean>;
@@ -795,8 +1010,10 @@ function rejectMetamaskDecryptionRequest(): Chainable<boolean>;
 ```typescript
 cy.rejectMetamaskDecryptionRequest().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `rejectDecryptionRequest`
+{% tab title="Playwright" %}
+### `rejectDecryptionRequest`
 
 ```typescript
 function rejectDecryptionRequest(): Promise<boolean>;
@@ -807,8 +1024,10 @@ function rejectDecryptionRequest(): Promise<boolean>;
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
 
-await metamask.rejectDecryptionRequest();
+await metamask.rejectDecryptionRequest();abs
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -818,7 +1037,9 @@ await metamask.rejectDecryptionRequest();
 
 Add custom token to Metamask.
 
-### Cypress — `importMetamaskToken`
+{% tabs %}
+{% tab title="Cypress" %}
+### `importMetamaskToken`
 
 ```typescript
 function importMetamaskToken(
@@ -848,7 +1069,11 @@ it(`importMetamaskToken should import token to metamask`, () => {
 });
 ```
 
-### Playwright — `importToken`
+
+{% endtab %}
+
+{% tab title="Playwright" %}
+### `importToken`
 
 ```typescript
 function importToken(
@@ -879,6 +1104,8 @@ test("import token", async ({ page }) => {
   await expect(tokenData.imported).to.be.true;
 });
 ```
+{% endtab %}
+{% endtabs %}
 
 #### **Preview**
 
@@ -888,7 +1115,9 @@ test("import token", async ({ page }) => {
 
 Confirm Metamask's request to add a token.
 
-### Cypress — `confirmMetamaskAddToken`
+{% tabs %}
+{% tab title="Cypress" %}
+### `confirmMetamaskAddToken`
 
 ```typescript
 function confirmMetamaskAddToken(): Chainable<boolean>;
@@ -899,8 +1128,10 @@ function confirmMetamaskAddToken(): Chainable<boolean>;
 ```typescript
 cy.confirmMetamaskAddToken().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `confirmAddToken`
+{% tab title="Playwright" %}
+### `confirmAddToken`
 
 ```typescript
 function confirmAddToken(): Promise<boolean>;
@@ -913,6 +1144,8 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 await metamask.confirmAddToken();
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -922,7 +1155,9 @@ await metamask.confirmAddToken();
 
 Reject Metamask's request to add a token.
 
-### Cypress — `rejectMetamaskAddToken`
+{% tabs %}
+{% tab title="Cypress" %}
+### `rejectMetamaskAddToken`
 
 ```typescript
 function rejectMetamaskAddToken(): Chainable<boolean>;
@@ -933,8 +1168,10 @@ function rejectMetamaskAddToken(): Chainable<boolean>;
 ```typescript
 cy.rejectMetamaskAddToken().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `rejectAddToken`
+{% tab title="Playwright" %}
+### `rejectAddToken`
 
 ```typescript
 function rejectAddToken(): Promise<boolean>;
@@ -947,6 +1184,8 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 await metamask.rejectAddToken();
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -956,7 +1195,9 @@ await metamask.rejectAddToken();
 
 Confirm Metamask's permission to spend assets.
 
-### Cypress — `confirmMetamaskPermissionToSpend`
+{% tabs %}
+{% tab title="Cypress" %}
+### `confirmMetamaskPermissionToSpend`
 
 ```typescript
 function confirmMetamaskPermissionToSpend(
@@ -969,8 +1210,10 @@ function confirmMetamaskPermissionToSpend(
 ```typescript
 cy.confirmMetamaskPermissionToSpend().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `confirmPermissionToSpend`
+{% tab title="Playwright" %}
+### `confirmPermissionToSpend`
 
 ```typescript
 function confirmPermissionToSpend(): Promise<boolean>;
@@ -983,6 +1226,8 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 await metamask.confirmPermissionToSpend();
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -992,7 +1237,9 @@ await metamask.confirmPermissionToSpend();
 
 Reject Metamask's permission to spend assets.
 
-### Cypress — `rejectMetamaskPermissionToSpend`
+{% tabs %}
+{% tab title="Cypress" %}
+### `rejectMetamaskPermissionToSpend`
 
 ```typescript
 function rejectMetamaskPermissionToSpend(): Chainable<boolean>;
@@ -1003,12 +1250,24 @@ function rejectMetamaskPermissionToSpend(): Chainable<boolean>;
 ```typescript
 cy.rejectMetamaskPermissionToSpend().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `rejectPermissionToSpend`
+{% tab title="Playwright" %}
+### `rejectPermissionToSpend`
 
 ```typescript
 function rejectPermissionToSpend(): Promise<boolean>;
 ```
+
+#### Example&#x20;
+
+```typescript
+import * as metamask from "@synthetixio/synpress/commands/metamask";
+
+await metamask.rejectPermissionToSpend();
+```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -1018,7 +1277,9 @@ function rejectPermissionToSpend(): Promise<boolean>;
 
 Accept Metamask access request.
 
-### Cypress — `acceptMetamaskAccess`
+{% tabs %}
+{% tab title="Cypress" %}
+### `acceptMetamaskAccess`
 
 <pre class="language-typescript"><code class="lang-typescript"><strong>function acceptMetamaskAccess(options?: {
 </strong>  allAccounts?: boolean; // Will select all the accounts.
@@ -1039,8 +1300,10 @@ cy.acceptMetamaskAccess({ confirmDataSignatureRequest: true });
 // Accept MetaMask connection to all accounts
 cy.acceptMetamaskAccess({ allAccounts: true });
 ```
+{% endtab %}
 
-### Playwright — `acceptAccess`
+{% tab title="Playwright" %}
+### `acceptAccess`
 
 ```typescript
 function acceptAccess(options?: {
@@ -1062,6 +1325,8 @@ await playwright.acceptAccess({ confirmDataSignatureRequest: true });
 // Accept Metamask connection to all accounts
 await playwright.acceptAccess({ allAccounts: true });
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -1071,7 +1336,9 @@ await playwright.acceptAccess({ allAccounts: true });
 
 Confirm Metamask transaction (auto-detects `eip-1559` and legacy transactions).
 
-### Cypress — `confirmMetamaskTransaction`
+{% tabs %}
+{% tab title="Cypress" %}
+### `confirmMetamaskTransaction`
 
 ```typescript
 function confirmMetamaskTransaction(
@@ -1120,8 +1387,10 @@ cy.confirmMetamaskTransaction("market");
 cy.confirmMetamaskTransaction("aggressive");
 cy.confirmMetamaskTransaction("site");
 ```
+{% endtab %}
 
-### Playwright — `confirmTransaction`
+{% tab title="Playwright" %}
+### `confirmTransaction`
 
 ```typescript
 function confirmTransaction(
@@ -1156,8 +1425,10 @@ await expect(txData.confirmed).to.be.true;
 await metamask.confirmMetamaskTransaction("low");
 <strong>await metamask.confirmMetamaskTransaction("market");
 </strong>await metamask.confirmMetamaskTransaction("aggressive");
-await metamask.confirmMetamaskTransaction("site");
+await metamask.confirmMetamaskTransaction("site");ta
 </code></pre>
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -1165,7 +1436,9 @@ await metamask.confirmMetamaskTransaction("site");
 
 ## **Reject Metamask Transaction**
 
-### Cypress — `rejectMetamaskTransaction`
+{% tabs %}
+{% tab title="Cypress" %}
+### `rejectMetamaskTransaction`
 
 ```typescript
 function rejectMetamaskTransaction(): Chainable<boolean>;
@@ -1176,8 +1449,10 @@ function rejectMetamaskTransaction(): Chainable<boolean>;
 ```typescript
 cy.rejectMetamaskTransaction().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `rejectTransaction`
+{% tab title="Playwright" %}
+### `rejectTransaction`
 
 ```typescript
 function rejectTransaction(): Promise<boolean>;
@@ -1188,8 +1463,10 @@ function rejectTransaction(): Promise<boolean>;
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
 
-await metamask.rejectTransaction();
+await metamask.rejectTransaction();bs
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -1199,7 +1476,9 @@ await metamask.rejectTransaction();
 
 Allow the dApp to add a new network in Metamask.
 
-### Cypress — `allowMetamaskToAddNetwork`
+{% tabs %}
+{% tab title="Cypress" %}
+### &#x20;`allowMetamaskToAddNetwork`
 
 ```typescript
 function allowMetamaskToAddNetwork(waitForEvent?: string): Chainable<boolean>;
@@ -1211,8 +1490,10 @@ function allowMetamaskToAddNetwork(waitForEvent?: string): Chainable<boolean>;
 cy.allowMetamaskToAddNetwork("close").should("be.true");
 cy.allowMetamaskToAddNetwork().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `allowToAddNetwork`
+{% tab title="Playwright" %}
+### `allowToAddNetwork`
 
 ```typescript
 function allowToAddNetwork(waitForEvent?: string): Promise<boolean>;
@@ -1225,6 +1506,8 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 await metamask.allowToAddNetwork();
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -1234,7 +1517,9 @@ await metamask.allowToAddNetwork();
 
 Reject dApp to add a new network in Metamask.
 
-### Cypress — `rejectMetamaskToAddNetwork`
+{% tabs %}
+{% tab title="Cypress" %}
+### `rejectMetamaskToAddNetwork`
 
 ```typescript
 function rejectMetamaskToAddNetwork(): Chainable<boolean>;
@@ -1245,8 +1530,10 @@ function rejectMetamaskToAddNetwork(): Chainable<boolean>;
 ```typescript
 cy.rejectMetamaskToAddNetwork().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `rejectToAddNetwork`
+{% tab title="Playwright" %}
+### `rejectToAddNetwork`
 
 ```typescript
 function rejectToAddNetwork(): Promise<boolean>;
@@ -1259,6 +1546,8 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 await metamask.rejectToAddNetwork();
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -1268,7 +1557,9 @@ await metamask.rejectToAddNetwork();
 
 Allow the dApp to switch the network in Metamask.
 
-### Cypress — `allowMetamaskToSwitchNetwork`
+{% tabs %}
+{% tab title="Cypress" %}
+### `allowMetamaskToSwitchNetwork`
 
 ```typescript
 function allowMetamaskToSwitchNetwork(): Chainable<boolean>;
@@ -1279,8 +1570,10 @@ function allowMetamaskToSwitchNetwork(): Chainable<boolean>;
 ```typescript
 cy.allowMetamaskToSwitchNetwork().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `allowToSwitchNetwork`
+{% tab title="Playwright" %}
+### `allowToSwitchNetwork`
 
 ```typescript
 function allowToSwitchNetwork(): Promise<boolean>;
@@ -1293,6 +1586,8 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 await metamask.allowToSwitchNetwork();
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -1302,7 +1597,9 @@ await metamask.allowToSwitchNetwork();
 
 Reject the dApp to switch the network in Metamask.
 
-### Cypress — `rejectMetamaskToSwitchNetwork`
+{% tabs %}
+{% tab title="Cypress" %}
+### `rejectMetamaskToSwitchNetwork`
 
 ```typescript
 function rejectMetamaskToSwitchNetwork(): Chainable<boolean>;
@@ -1313,8 +1610,10 @@ function rejectMetamaskToSwitchNetwork(): Chainable<boolean>;
 ```typescript
 cy.rejectMetamaskToSwitchNetwork().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `rejectToSwitchNetwork`
+{% tab title="Playwright" %}
+### `rejectToSwitchNetwork`
 
 ```typescript
 function rejectToSwitchNetwork(): Promise<boolean>;
@@ -1325,8 +1624,10 @@ function rejectToSwitchNetwork(): Promise<boolean>;
 ```typescript
 import * as metamask from "@synthetixio/synpress/commands/metamask";
 
-await metamask.rejectToSwitchNetwork();
+await metamask.rejectToSwitchNetwork();bs
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -1336,7 +1637,9 @@ await metamask.rejectToSwitchNetwork();
 
 Allow the dApp to add a new network in Metamask and switch to it.
 
-### Cypress — `allowMetamaskToAddAndSwitchNetwork`
+{% tabs %}
+{% tab title="Cypress" %}
+### `allowMetamaskToAddAndSwitchNetwork`
 
 ```typescript
 function allowMetamaskToAddAndSwitchNetwork(): Chainable<boolean>;
@@ -1347,8 +1650,10 @@ function allowMetamaskToAddAndSwitchNetwork(): Chainable<boolean>;
 ```typescript
 cy.allowMetamaskToAddAndSwitchNetwork().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `allowToAddAndSwitchNetwork`
+{% tab title="Playwright" %}
+### `allowToAddAndSwitchNetwork`
 
 ```typescript
 function allowToAddAndSwitchNetwork(): Promise<boolean>;
@@ -1361,10 +1666,14 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 await metamask.allowToAddAndSwitchNetwork();
 ```
+{% endtab %}
+{% endtabs %}
 
 ## **Unlock Metamask**
 
-### Cypress — `unlockMetamask`
+{% tabs %}
+{% tab title="Cypress" %}
+### `unlockMetamask`
 
 ```typescript
 function unlockMetamask(password: string): Chainable<boolean>;
@@ -1375,8 +1684,10 @@ function unlockMetamask(password: string): Chainable<boolean>;
 ```typescript
 cy.unlockMetamask("my_password");
 ```
+{% endtab %}
 
-### Playwright — `unlock`
+{% tab title="Playwright" %}
+### `unlock`
 
 ```typescript
 function unlock(password: string): Promise<boolean>;
@@ -1389,6 +1700,8 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 await metamask.unlock("my_password");
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
@@ -1398,7 +1711,9 @@ await metamask.unlock("my_password");
 
 Fetches previous Metamask wallet address.
 
-### Cypress — `fetchMetamaskWalletAddress`
+{% tabs %}
+{% tab title="Cypress" %}
+### `fetchMetamaskWalletAddress`
 
 ```typescript
 function fetchMetamaskWalletAddress(): Chainable<string>;
@@ -1409,8 +1724,10 @@ function fetchMetamaskWalletAddress(): Chainable<string>;
 ```typescript
 cy.fetchMetamaskWalletAddress().then((address) => cy.log(address));
 ```
+{% endtab %}
 
-### Playwright — `fetchWalletAddress`
+{% tab title="Playwright" %}
+### `fetchWalletAddress`
 
 ```typescript
 function fetchWalletAddress(): Promise<string>;
@@ -1424,12 +1741,16 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 const walletAddr = await metamask.fetchWalletAddress();
 await expect(walletAddr).to.be.eq("0x...");
 ```
+{% endtab %}
+{% endtabs %}
 
 ## **Setup Metamask**
 
 Load the MetaMask extension and go through the setup process.
 
-### Cypress — `setupMetamask`
+{% tabs %}
+{% tab title="Cypress" %}
+### `setupMetamask`
 
 ```typescript
 setupMetamask(
@@ -1466,8 +1787,10 @@ cy.setupMetamask(
   "metamask_password"
 );
 ```
+{% endtab %}
 
-### Playwright — `initialSetup`
+{% tab title="Playwright" %}
+### `initialSetup`
 
 ```typescript
 function initialSetup(browser: BrowserType<{}> | null, {
@@ -1499,6 +1822,8 @@ import { initialSetup } from "@synthetixio/synpress/commands/metamask";
   enableAdvancedSettings: true,
 });
 </code></pre>
+{% endtab %}
+{% endtabs %}
 
 ## **Etherscan API**
 
@@ -1506,7 +1831,7 @@ import { initialSetup } from "@synthetixio/synpress/commands/metamask";
 
 Get transaction status from Etherscan API.
 
-### Cypress — `etherscanGetTransactionStatus`
+### `etherscanGetTransactionStatus`
 
 ```typescript
 type TxStatus = {
@@ -1561,7 +1886,9 @@ function etherscanWaitForTxSuccess(txid: string): Chainable<boolean>;
 
 Activate the ability (in Metamask settings) to specify custom gas prices and limits while doing transactions in Metamask.
 
-### Cypress — `activateAdvancedGasControlInMetamask`
+{% tabs %}
+{% tab title="Cypress" %}
+### `activateAdvancedGasControlInMetamask`
 
 ```typescript
 function activateAdvancedGasControlInMetamask(
@@ -1573,8 +1900,10 @@ function activateAdvancedGasControlInMetamask(
 
 <pre class="language-typescript"><code class="lang-typescript"><strong>cy.activateAdvancedGasControlInMetamask().should('be.true');
 </strong></code></pre>
+{% endtab %}
 
-#### Playwright — `activateAdvancedGasControl`
+{% tab title="Playwright" %}
+### `activateAdvancedGasControl`
 
 ```typescript
 function activateAdvancedGasControl(skipSetup?: boolean): Promise<boolean>;
@@ -1588,11 +1917,17 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 await metamask.activateAdvancedGasControl();
 ```
 
-### **Activate Show Hex Data In Metamask**
+
+{% endtab %}
+{% endtabs %}
+
+## **Activate Show Hex Data In Metamask**
 
 Activate the ability (in Metamask settings) to show hex data while doing transactions in Metamask.
 
-### Cypress — `activateShowHexDataInMetamask`
+{% tabs %}
+{% tab title="Cypress" %}
+### `activateShowHexDataInMetamask`
 
 ```typescript
 function activateShowHexDataInMetamask(skipSetup?: boolean): Chainable<boolean>;
@@ -1603,8 +1938,10 @@ function activateShowHexDataInMetamask(skipSetup?: boolean): Chainable<boolean>;
 ```typescript
 cy.activateShowHexDataInMetamask().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `activateShowHexData`
+{% tab title="Second Tab" %}
+### `activateShowHexData`
 
 ```typescript
 function activateShowHexData(skipSetup?: boolean): Promise<boolean>;
@@ -1617,16 +1954,20 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 await metamask.activateShowHexData();
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
 <figure><img src=".gitbook/assets/show_hex_data (1).png" alt="Show hex data option in Metamask settings"><figcaption><p>Show hex data option in Metamask settings</p></figcaption></figure>
 
-### **Activate Testnet Conversion In Metamask**
+## **Activate Testnet Conversion In Metamask**
 
 Activate the ability (in Metamask settings) to show fiat conversions on test networks in Metamask.
 
-### Cypress — `activateTestnetConversionInMetamask`
+{% tabs %}
+{% tab title="Cypress" %}
+### `activateTestnetConversionInMetamask`
 
 ```typescript
 function activateTestnetConversionInMetamask(
@@ -1639,8 +1980,10 @@ function activateTestnetConversionInMetamask(
 ```typescript
 cy.activateTestnetConversionInMetamask().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `activateTestnetConversion`
+{% tab title="Playwright" %}
+### `activateTestnetConversion`
 
 ```typescript
 function activateTestnetConversion(): Promise<boolean>;
@@ -1653,16 +1996,20 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 await metamask.activateTestnetConversion();
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
 <figure><img src=".gitbook/assets/show_conversion_on_test_networks.png" alt="Show conversion on test networks option in Metamask settings"><figcaption><p>Show conversion on test networks option in Metamask settings</p></figcaption></figure>
 
-### **Activate Show Testnet Networks In Metamask**
+## **Activate Show Testnet Networks In Metamask**
 
 Activate the ability (in Metamask settings) to show test networks in Metamask.
 
-### Cypress — `activateShowTestnetNetworksInMetamask`
+{% tabs %}
+{% tab title="Cypress" %}
+### `activateShowTestnetNetworksInMetamask`
 
 ```typescript
 function activateShowTestnetNetworksInMetamask(
@@ -1675,8 +2022,10 @@ function activateShowTestnetNetworksInMetamask(
 ```typescript
 cy.activateShowTestnetNetworksInMetamask().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `activateShowTestnetNetworks`
+{% tab title="Playwright" %}
+### `activateShowTestnetNetworks`
 
 ```typescript
 function activateShowTestnetNetworks(skipSetup?: boolean): Promise<boolean>;
@@ -1689,16 +2038,20 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 await metamask.activateShowTestnetNetworks();
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
 <figure><img src=".gitbook/assets/show_test_networks.png" alt="Show test networks option in Metamask settings"><figcaption><p>Show test networks option in Metamask settings</p></figcaption></figure>
 
-### **Activate Custom Nonce In Metamask**
+## **Activate Custom Nonce In Metamask**
 
 Activate the ability (in Metamask settings) to specify custom nonce while doing transactions in Metamask.
 
-### Cypress — `activateCustomNonceInMetamask`
+{% tabs %}
+{% tab title="Cypress" %}
+### `activateCustomNonceInMetamask`
 
 ```typescript
 function activateCustomNonceInMetamask(skipSetup?: boolean): Chainable<boolean>;
@@ -1709,8 +2062,10 @@ function activateCustomNonceInMetamask(skipSetup?: boolean): Chainable<boolean>;
 ```typescript
 cy.activateCustomNonceInMetamask().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `activateCustomNonce`
+{% tab title="Playwright" %}
+### `activateCustomNonce`
 
 ```typescript
 function activateCustomNonce(skipSetup?: boolean): Promise<boolean>;
@@ -1723,16 +2078,20 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 await metamask.activateCustomNonce();
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
 <figure><img src=".gitbook/assets/customize_transaction_nonce (1).png" alt="Customize transaction nonce option in Metamask settings"><figcaption><p>Customize transaction nonce option in Metamask settings</p></figcaption></figure>
 
-### **Activate Dismiss Backup Reminder In Metamask**
+## **Activate Dismiss Backup Reminder In Metamask**
 
 Activate the ability (in Metamask settings) to dismiss secret recovery phrase reminders in Metamask.
 
-### Cypress — `activateDismissBackupReminderInMetamask`
+{% tabs %}
+{% tab title="Cypress" %}
+### `activateDismissBackupReminderInMetamask`
 
 ```typescript
 function activateDismissBackupReminderInMetamask(
@@ -1746,7 +2105,11 @@ function activateDismissBackupReminderInMetamask(
 cy.activateDismissBackupReminderInMetamask().should("be.true");
 ```
 
-### Playwright — `activateDismissBackupReminder`
+
+{% endtab %}
+
+{% tab title="Playwright" %}
+### `activateDismissBackupReminder`
 
 ```typescript
 function activateDismissBackupReminder(): Promise<boolean>;
@@ -1759,16 +2122,20 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 await metamask.activateDismissBackupReminder();
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
 <figure><img src=".gitbook/assets/dismiss_secret_recovery_phrase_backup_reminder (1).png" alt="Dismiss secret recovery phrase backup reminder option in Metamask settings"><figcaption><p>Dismiss secret recovery phrase backup reminder option in Metamask settings</p></figcaption></figure>
 
-### **Activate `eth_sign` Requests In Metamask**
+## **Activate `eth_sign` Requests In Metamask**
 
 Activate eth sign requests in Metamask settings.
 
-### Cypress — `activateEthSignRequestsInMetamask`
+{% tabs %}
+{% tab title="Cypress" %}
+### `activateEthSignRequestsInMetamask`
 
 <pre class="language-typescript"><code class="lang-typescript"><strong>function activateEthSignRequestsInMetamask(skipSetup?: boolean): Chainable&#x3C;boolean>;
 </strong></code></pre>
@@ -1778,8 +2145,10 @@ Activate eth sign requests in Metamask settings.
 ```typescript
 cy.activateEthSignRequestsInMetamask().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `activateEthSignRequests`
+{% tab title="Playwright" %}
+### `activateEthSignRequests`
 
 ```typescript
 function activateEthSignRequests(skipSetup?: boolean): Promise<boolean>;
@@ -1792,16 +2161,20 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 await metamask.activateEthSignRequests();
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
 <figure><img src=".gitbook/assets/toggle_eth_sign_req.png" alt="Toggle eth_sign requests option in Metamask settings"><figcaption><p>Toggle eth_sign requests option in Metamask settings</p></figcaption></figure>
 
-### **Activate Improved Token Allowance In Metamask**
+## **Activate Improved Token Allowance In Metamask**
 
 Activate improved token allowance in Metamask settings (experimental).
 
-### Cypress — `activateImprovedTokenAllowanceInMetamask`
+{% tabs %}
+{% tab title="Cypress" %}
+### `activateImprovedTokenAllowanceInMetamask`
 
 ```typescript
 function activateImprovedTokenAllowanceInMetamask(
@@ -1814,8 +2187,10 @@ function activateImprovedTokenAllowanceInMetamask(
 ```typescript
 cy.activateImprovedTokenAllowanceInMetamask().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `activateImprovedTokenAllowance`
+{% tab title="Playwright" %}
+### `activateImprovedTokenAllowance`
 
 ```typescript
 function activateImprovedTokenAllowance(skipSetup?: boolean): Promise<boolean>;
@@ -1828,12 +2203,16 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 await metamask.activateImprovedTokenAllowance();
 ```
+{% endtab %}
+{% endtabs %}
 
-### **Reset Metamask Account**
+## **Reset Metamask Account**
 
 Reset the Metamask account state in settings.
 
-### Cypress — `resetMetamaskAccount`
+{% tabs %}
+{% tab title="Cypress" %}
+### `resetMetamaskAccount`
 
 ```typescript
 function resetMetamaskAccount(): Chainable<boolean>;
@@ -1844,8 +2223,10 @@ function resetMetamaskAccount(): Chainable<boolean>;
 ```typescript
 cy.resetMetamaskAccount().should("be.true");
 ```
+{% endtab %}
 
-### Playwright — `resetAccount`
+{% tab title="Playwright" %}
+### `resetAccount`
 
 ```typescript
 function resetAccount(): Promise<boolean>;
@@ -1858,6 +2239,8 @@ import * as metamask from "@synthetixio/synpress/commands/metamask";
 
 await metamask.resetAccount();
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Preview
 
