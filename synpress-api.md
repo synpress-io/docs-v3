@@ -2244,4 +2244,4 @@ await metamask.resetAccount();
 
 #### Preview
 
-<figure><img src="synpress-api/broken-reference" alt="Reset Metamask account"><figcaption><p>Reset Metamask account</p></figcaption></figure>
+<figure><img src="./.gitbook/assets/reset_account.png" alt="Reset Metamask account"><figcaption><p>Reset Metamask account</p></figcaption></figure>
