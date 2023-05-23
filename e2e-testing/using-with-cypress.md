@@ -23,9 +23,9 @@ yarn install
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-23 103611.jpg" alt=""><figcaption></figcaption></figure>
 
-### Test file
+### Write Test file
 
-All of your test files will display inside folder cypress/e2e&#x20;
+All of your test files will display inside folder `cypress/e2e`
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-23 103455.jpg" alt=""><figcaption></figcaption></figure>
 
