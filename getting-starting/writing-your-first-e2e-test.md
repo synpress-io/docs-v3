@@ -77,3 +77,35 @@ import '@synthetixio/synpress/support/index';
 ```
 {% endtab %}
 {% endtabs %}
+
+{% tabs %}
+{% tab title="Synpress Config" %}
+In your tests folder add this `synpress.json`
+
+```json
+{
+  "baseUrl": "http://localhost:4783",
+  "userAgent": "synpress",
+  "retries": { "runMode": 0, "openMode": 0 },
+  "integrationFolder": "integration",
+  "screenshotsFolder": "screenshots",
+  "videosFolder": "videos",
+  "video": true,
+  "chromeWebSecurity": true,
+  "viewportWidth": 1366,
+  "viewportHeight": 850,
+  "component": {
+    "componentFolder": ".",
+    "testFiles": "**/*spec.{js,jsx,ts,tsx}"
+  },
+  "env": {
+    "coverage": false
+  },
+  "defaultCommandTimeout": 30000,
+  "pageLoadTimeout": 30000,
+  "requestTimeout": 30000,
+  "supportFile": "support/index.js"
+}
+```
+{% endtab %}
+{% endtabs %}
