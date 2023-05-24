@@ -9,6 +9,7 @@
   * [Using with Playwright](e2e-testing/using-with-playwright.md)
   * [Running From GitHub CI/CD](e2e-testing/running-from-github-ci-cd.md)
   * [Running From GitLab CI/CD](e2e-testing/running-from-gitlab-ci-cd.md)
-  * [Configuration](e2e-testing/configuration.md)
   * [Learn more!!](e2e-testing/learn-more.md)
+* [⚙ Environment Variables](environment-variables.md)
+* [💻 Synpress CLI](synpress-cli.md)
 * [🗝 Synpress API](synpress-api.md)
