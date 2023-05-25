@@ -1,136 +1,127 @@
-# Using with Cypress
+# 🌙 Using with Cypress
 
-### Clone Example
+[Synpress](https://github.com/Synthetixio/synpress) can be used as a plugin for [Cypress](https://www.cypress.io/). In this tutorial, We will address the following&#x20;
 
-```
-git clone https://github.com/drptbl/synpress-examples.git
-```
+1. [How to start testing a new project with Synpress + Cypress](using-with-cypress.md#how-to-start-testing-a-new-project-with-synpress-+-cypress)
+2. Add Synpress for the existing Cypress setup.&#x20;
 
-* [isolated-state](https://github.com/drptbl/synpress-examples/tree/master/cypress/isolated-state) => example setup of Cypress with synpress using isolated state meaning that each test is run on fresh instance of tested website, but in same browser (works differently than Playwright which uses new browser context). Metamask extension state is shared all the time. Test isolation is preferred way of running tests.
-* [shared-state](https://github.com/drptbl/synpress-examples/tree/master/cypress/shared-state) => example setup of Cypress with synpress using shared state meaning that each test is run on same instance of tested website. Metamask extension state is also shared all the time.
+## Prerequisites
 
-```
-cd synpress-examples/cypress/isolated-state
-```
+1. [General knowledge of the notion of E2E testing](https://katalon.com/resources-center/blog/end-to-end-e2e-testing)
+2. Basic knowledge in Cypress  —  [Write your first test with Cypress](https://docs.cypress.io/guides/end-to-end-testing/writing-your-first-end-to-end-test#Write-your-first-test)&#x20;
+3. \[optional] Basic knowledge is React
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-23 103026 (1).jpg" alt=""><figcaption></figcaption></figure>
+## How to start testing a new project with Synpress + Cypress
 
-### Install package
+### 1. Install Synpress&#x20;
 
-```
-yarn install
-```
+Add Synpress to your project dependencies.&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-23 103611.jpg" alt=""><figcaption></figcaption></figure>
-
-### Config .env file
-
-Config Environment Variables at .env file.
-
-You can check list of Environment Variables can be config at [Environment Variables](../environment-variables.md)
-
-```
-NETWORK_NAME=sepolia
-SECRET_WORDS='test test test test test test test test test test test junk'
+```bash
+yarn add -D @synthetixio/synpress
 ```
 
-### First Test
+### 2. Create Test Files and Directories
 
-All of your test files will display inside folder `cypress/e2e`
+At the root of your project, create `cypress/e2e/example.cy.[js,ts]` and `cypress/support/e2e.[js,ts]`&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-23 103455.jpg" alt=""><figcaption></figcaption></figure>
 
-Take a look at the following example to see how to write a test.
 
+{% tabs %}
+{% tab title="JavaScript" %}
+```
+/cypress/e2e/example.cy.js
+/cypress/support/e2e.js
+```
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-05-25 at 9.06.04 AM.png" alt=""><figcaption></figcaption></figure>
+{% endtab %}
+
+{% tab title="TypeScript" %}
+```typescript
+/cypress/e2e/example.cy.ts
+/cypress/support/e2e.ts
+```
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-05-25 at 9.05.00 AM.png" alt=""><figcaption></figcaption></figure>
+{% endtab %}
+{% endtabs %}
+
+* `cypress/e2e/*` -> Where all of your E2E tests will live.
+* `cypress/support/e2e.[js,ts]` -> Where you will import Synpress plugins.
+
+#### Add Synpress to your support file
+
+{% tabs %}
+{% tab title="JavaScript" %}
 ```javascript
-describe("connect wallet spec", () => {
-  beforeEach(() => {
-    cy.visit("https://metamask.github.io/test-dapp");
-  });
+// cypress/support/e2e.js
+/// <reference types="Cypress" />
 
-  afterEach(() => {
-    cy.disconnectMetamaskWalletFromAllDapps();
-    cy.resetMetamaskAccount();
-  });
+import "@synthetixio/synpress/support/index";
+```
+{% endtab %}
 
-  it("should connect wallet with success", () => {
-    cy.get("#connectButton").click();
-    cy.acceptMetamaskAccess();
-    cy.get("#accounts").should(
-      "have.text",
-      "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266"
-    );
-  });
+{% tab title="TypeScript" %}
+```typescript
+// cypress/support/e2e.ts
+/// <reference types="Cypress" />
 
-  it("import private key and connect wallet using imported metamask account", () => {
-    cy.importMetamaskAccount(
-      "0xdbda1821b80551c9d65939329250298aa3472ba22feea921c0cf5d620ea67b97"
-    );
-    cy.get("#connectButton").click();
-    cy.acceptMetamaskAccess();
-    cy.get("#accounts").should(
-      "have.text",
-      "0x23618e81e3f5cdf7f54c3d65f7fbc0abf5b21e8f"
-    );
-  });
+import "@synthetixio/synpress/support/index";
+```
+{% endtab %}
+{% endtabs %}
+
+For more information about [Writing and Organizing Tests in Cypress read this guide](https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests) &#x20;
+
+### 3. Create Synpress Config File&#x20;
+
+Synpress config file is exactly the same as [Cypress config file](https://docs.cypress.io/guides/references/configuration) with some modifications. Add the config file to the project root directory.&#x20;
+
+```typescript
+// synpress.config.js
+const { defineConfig } = require("cypress");
+const setupNodeEvents = require("@synthetixio/synpress/plugins/index");
+const supportFile = "cypress/support/e2e.ts";
+const timeout = process.env.SYNDEBUG ? 9999999 : 30000;
+
+module.exports = defineConfig({
+  userAgent: "synpress",
+  retries: {
+    runMode: process.env.CI ? 1 : 0,
+    openMode: 0,
+  },
+  fixturesFolder: "@synthetixio/synpress/fixtures",
+  chromeWebSecurity: true,
+  viewportWidth: 1920,
+  viewportHeight: 1080,
+  video: false,
+  env: {
+    coverage: false,
+  },
+  defaultCommandTimeout: timeout,
+  pageLoadTimeout: timeout,
+  requestTimeout: timeout,
+  e2e: {
+    testIsolation: false,
+    setupNodeEvents,
+    baseUrl: "http://127.0.0.1:8080/",
+    specPattern: "cypress/e2e/**/*.{js,jsx,ts,tsx}",
+    supportFile,
+  },
 });
 ```
 
-### Navigation <a href="#navigation" id="navigation"></a>
 
-Most of the tests will start with navigating page to the URL. After that, test will be able to interact with the page elements.
 
-```
-await cy.visit('https://metamask.github.io/test-dapp');
-```
 
-Synpress will wait for page to reach the load state prior to moving forward.
 
-### Query for an element <a href="#step-2-query-for-an-element" id="step-2-query-for-an-element"></a>
 
-Performing actions starts with locating the elements. To get one or more DOM elements by selector or alias, we'll use cy.get()[^1]. [Learn more](https://docs.cypress.io/api/commands/get)
 
-```
-cy.get("#connectButton");
+```json5
+// package.json  
+"synpress:run": "env-cmd -f .env synpress run --configFile synpress.config.js",
+"test:e2e": "start-server-and-test 'yarn dev' http://localhost:8080 'yarn synpress:run'"
 ```
 
-### Interaction with element
-
-Ok, now we want to click on the link we found. How do we do that? Add a [.click()](https://docs.cypress.io/api/commands/click) command to the end of the previous command, like so:
-
-```
-cy.get("#connectButton").click();
-```
-
-### Interaction with metamask
-
-Now, after we click on the 'Connect Wallet' button, we need to interact with MetaMask. In this case, we should choose 'Accept MetaMask Access.' We can accomplish this by using the command cy.acceptMetamaskAccess().&#x20;
-
-```
-cy.acceptMetamaskAccess();
-```
-
-You can learn more about all MetaMask interaction command at [Synpress API](../synpress-api.md)
-
-### Assertions <a href="#assertions" id="assertions"></a>
-
-Let's make an assertion to make sure wallet was connected successfully to website. We can do that by looking up the account element and chaining an assertion to it with [.should()](https://docs.cypress.io/api/commands/should).
-
-Here's what that looks like:
-
-```
-cy.get("#accounts").should(
-      "have.text",
-      "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266"
-);
-```
-
-### Run test
-
-```
-yarn cypress:run
-```
-
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-23 104618.jpg" alt=""><figcaption></figcaption></figure>
-
-[^1]: 
+###
