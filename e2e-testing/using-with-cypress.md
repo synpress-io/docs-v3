@@ -231,13 +231,10 @@ Get to know all that Synpress has to offer throughout the [Synpress API](../synp
 
 ## See also&#x20;
 
-1. [Synpress Environment Vairables](../environment-variables.md)&#x20;
+1. [Synpress Environment Variables](../environment-variables.md)&#x20;
 2. [Synpress CLI ](../synpress-cli.md)
 3. [Synpress API](../synpress-api.md)
-
-
-
-
+4. [End-to-end testing using Synpress](https://klaytn.foundation/synpress-setup-tutorial/)
 
 :writing\_hand: [Edit this page](using-with-cypress.md)&#x20;
 
