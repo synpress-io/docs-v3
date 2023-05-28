@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Synpress — dApp E2E Testing](README.md)
+* [🔥 Synpress — dApp E2E Testing](README.md)
 * [Getting Started](getting-starting/README.md)
   * [Installing Synpress](getting-starting/installing-synpress.md)
   * [Writing Your First E2E test](getting-starting/writing-your-first-e2e-test.md)

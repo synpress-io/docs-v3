@@ -1,8 +1,9 @@
 ---
 description: Synpress is dApp E2E testing framework based on Cypress and Playwright.
+coverY: 0
 ---
 
-# Synpress — dApp E2E Testing
+# 🔥 Synpress — dApp E2E Testing
 
 Synpress is a "true" E2E testing framework&#x20;
 
