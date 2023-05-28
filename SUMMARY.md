@@ -2,7 +2,7 @@
 
 * [🔥 Synpress — dApp E2E Testing](README.md)
 * [Getting Started](getting-starting/README.md)
-  * [Installing Synpress](getting-starting/installing-synpress.md)
+  * [⏬ Installing Synpress](getting-starting/installing-synpress.md)
   * [Writing Your First E2E test](getting-starting/writing-your-first-e2e-test.md)
 * [E2E Testing](e2e-testing/README.md)
   * [🌙 Using with Cypress](e2e-testing/using-with-cypress.md)

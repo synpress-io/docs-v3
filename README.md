@@ -5,9 +5,7 @@ coverY: 0
 
 # 🔥 Synpress — dApp E2E Testing
 
-Synpress is a "true" E2E testing framework&#x20;
-
-
+[Synpress](https://github.com/Synthetixio/synpress) is a **"true"** E2E testing framework specific for dApps.&#x20;
 
 
 
