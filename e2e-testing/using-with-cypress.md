@@ -10,7 +10,7 @@ description: >-
 [Synpress](https://github.com/Synthetixio/synpress) can be used as a plugin for [Cypress](https://www.cypress.io/). In this tutorial, We will address the following&#x20;
 
 1. [How to start testing a new project with Synpress & Cypress](using-with-cypress.md#how-to-start-testing-a-new-project-with-synpress-+-cypress)
-2. Add Synpress for the existing Cypress setup.&#x20;
+2. [Add Synpress to an existing Cypress setup](using-with-cypress.md#add-synpress-to-an-existing-cypress-setup)&#x20;
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ description: >-
 
 ## How To Start Testing A New Project With Synpress & Cypress
 
-### 1. Install Synpress&#x20;
+### [1. Install Synpress ](../getting-starting/installing-synpress.md)
 
 Add Synpress to your project dependencies.&#x20;
 
@@ -227,14 +227,47 @@ describe("Synpress Demo", () => {
 
 Get to know all that Synpress has to offer throughout the [Synpress API](../synpress-api.md)
 
+## Add Synpress To An Existing Cypress Setup
 
+### [1. Install Synpress ](../getting-starting/installing-synpress.md)
+
+Add Synpress to your project dependencies.&#x20;
+
+```bash
+yarn add -D @synthetixio/synpress
+```
+
+### [2. Update your support file](https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests#Support-file)
+
+```typescript
+import "@synthetixio/synpress/support/index";
+```
+
+### 3. Update `cypress.config.js`
+
+You can simply import the Synpress plugin into `cypress.config.js` file as stated below.&#x20;
+
+<pre class="language-diff"><code class="lang-diff"><strong>+ const setupNodeEvents = require("@synthetixio/synpress/plugins/index");
+</strong>module.exports = defineConfig({
++ userAgent: "synpress",
+  e2e: {
++   setupNodeEvents,
+  },
+});
+</code></pre>
+
+### [4. Add required environment variables](using-with-cypress.md#4.-add-required-environment-variables)
+
+### [5. Add Synpress run script](using-with-cypress.md#5.-add-synpress-run-script)
+
+### [6. Write your first test](using-with-cypress.md#6.-write-your-first-test) :tada:
 
 ## See also&#x20;
 
 1. [Synpress Environment Variables](../environment-variables.md)&#x20;
 2. [Synpress CLI ](../synpress-cli.md)
 3. [Synpress API](../synpress-api.md)
-4. [End-to-end testing using Synpress](https://klaytn.foundation/synpress-setup-tutorial/)
+4. [<mark style="background-color:orange;">End-to-end testing using Synpress</mark>](https://klaytn.foundation/synpress-setup-tutorial/)
 
 :writing\_hand: [Edit this page](using-with-cypress.md)&#x20;
 
