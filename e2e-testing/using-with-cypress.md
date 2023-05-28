@@ -174,7 +174,7 @@ Starts server, waits for URL, then runs test command; when the tests end, shuts 
 
 Below is a simple dApp ([synpress-demo](https://gitlab.com/AhmedIbrahim336/synpress-demo)) written in React + [WAGMI](https://wagmi.sh/) that I created on GitLab. Feel free to clone the repo and play around with it (don't forget to add the environment variables!!). &#x20;
 
-<figure><img src="../.gitbook/assets/image.png" alt="Synpress dApp Demo"><figcaption><p>Synpress Demo</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt="Synpress dApp Demo"><figcaption><p>Synpress Demo</p></figcaption></figure>
 
 Below is a test case example for connecting dApp to MetaMask. Note that almost all of the logic is regular Cypress! _**Synpress comes to play when the dApp is interacting with Metamask (e.g. connect, send Tx, signing...)**_
 
