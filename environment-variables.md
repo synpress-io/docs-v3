@@ -3,6 +3,7 @@ description: >-
   Synpress is designed with the mindset that it will run in different
   environments (local development & CI/CD). Besides it can be used for all sorts
   of testing (eg. doing aggressive testing on mainnet,
+coverY: 0
 ---
 
 # ⚙ Environment Variables

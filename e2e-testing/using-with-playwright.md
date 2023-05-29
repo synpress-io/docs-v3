@@ -1,4 +1,8 @@
-# Using with Playwright
+---
+coverY: 0
+---
+
+# 🪐 Using with Playwright
 
 ### Clone Example
 

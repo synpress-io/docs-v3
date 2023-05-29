@@ -1,5 +1,6 @@
 ---
 description: List of all Cypress/Playwright APIs used in Synpress
+coverY: 0
 ---
 
 # 🗝 Synpress API

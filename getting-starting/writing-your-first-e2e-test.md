@@ -2,7 +2,7 @@
 description: Project structure for getting your first E2E tests running
 ---
 
-# Writing Your First E2E test
+# 🛸 Writing Your First E2E test
 
 ### Writing your first test
 

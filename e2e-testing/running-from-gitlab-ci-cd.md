@@ -1,3 +1,7 @@
+---
+coverY: 0
+---
+
 # 🧑🚀 GitLab CI/CD
 
 ## Prerequisites
