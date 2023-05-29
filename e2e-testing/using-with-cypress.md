@@ -134,11 +134,11 @@ All Cypress configs are still valid in Synpress config file. If you want to know
 A simple node program for executing commands using an environment from an env file.
 {% endembed %}
 
-<pre class="language-javascript"><code class="lang-javascript"><strong>// .env.e2e 
-</strong><strong>// The recovery phrase for the wallet that will be restored while preparing Metamask 
-</strong><strong>// Will be the selected wallet by default when connecting to the dApp 
+<pre class="language-bash"><code class="lang-bash"><strong># .env.e2e 
+</strong><strong># The recovery phrase for the wallet that will be restored while preparing Metamask 
+</strong><strong># Will be the selected wallet by default when connecting to the dApp 
 </strong><strong>SECRET_WORDS='battle raccoon helmet please deliver keep kiss round orphan frame update message'
-</strong><strong>// Network info at which the tests will run. 
+</strong><strong># Network info at which the tests will run. 
 </strong>NETWORK_NAME='Mumbai'
 CHAIN_ID=80001
 RPC_URL='https://matic-mumbai.chainstacklabs.com'
