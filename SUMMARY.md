@@ -8,7 +8,7 @@
   * [🌙 Using with Cypress](e2e-testing/using-with-cypress.md)
   * [Using with Playwright](e2e-testing/using-with-playwright.md)
   * [Running From GitHub CI/CD](e2e-testing/running-from-github-ci-cd.md)
-  * [Running From GitLab CI/CD](e2e-testing/running-from-gitlab-ci-cd.md)
+  * [🧑🚀 GitLab CI/CD](e2e-testing/running-from-gitlab-ci-cd.md)
   * [Learn more!!](e2e-testing/learn-more.md)
 * [⚙ Environment Variables](environment-variables.md)
 * [💻 Synpress CLI](synpress-cli.md)
