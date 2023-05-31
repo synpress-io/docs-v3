@@ -1,4 +1,5 @@
 ---
+description: Guide on how to run Synpress E2E tests from GitLab CI/CD pipeline.
 coverY: 0
 ---
 
@@ -10,17 +11,19 @@ coverY: 0
 2. Basic knowledge of Docker -> ([Containerize an application](https://docs.docker.com/get-started/02\_our\_app/), [Docker Compose](https://docs.docker.com/compose/gettingstarted/))
 3. Exiting Synpress Setup -> ([Cypress](using-with-cypress.md), [Playwright](using-with-playwright.md))
 
-## 1. Create Dockerfile
+## Run Synpress E2E Tests From GitLab CI/CD
+
+### 1. Create Dockerfile
 
 You should create a **docker image of your dApp** based on [synthetixio/docker-e2e](https://hub.docker.com/r/synthetixio/docker-e2e/tags) docker image.&#x20;
 
-ATM, [synthetixio/docker-e2e](https://hub.docker.com/r/synthetixio/docker-e2e/tags) only works for `linux/amd64` based machines. which means it will not work on the new Apple Silicon Chips. You can still try to [run it under Rosetta 2](https://levelup.gitconnected.com/docker-on-apple-silicon-mac-how-to-run-x86-containers-with-rosetta-2-4a679913a0d5). **With that being said, it will not affect the CI/CD as the CI/CD VM is already running under `linux/amd64`.**
+> ATM, [synthetixio/docker-e2e](https://hub.docker.com/r/synthetixio/docker-e2e/tags) only works for `linux/amd64` based machines. which means it will not work on the new Apple Silicon Chips. You can still try to [run it under Rosetta 2](https://levelup.gitconnected.com/docker-on-apple-silicon-mac-how-to-run-x86-containers-with-rosetta-2-4a679913a0d5). **With that being said, it will not affect the CI/CD as the CI/CD VM is already running under `linux/amd64`.**
 
 <figure><img src="../.gitbook/assets/Screenshot 2023-05-29 at 4.27.10 PM.png" alt=""><figcaption><p>Use Rosetta for x86/amd64 emulation on Apple Silicon</p></figcaption></figure>
 
-The end goal of having this `Dockerfile`  is being able to **run the docker image (of the dApp) from a docker container** using `docker-compose`&#x20;
+The end goal of having this `Dockerfile`  is being able to **run the docker image (of the dApp) from a docker container** using `docker-compose` .
 
-The example below is a basic `Dockerfile` setup (yours might be different)
+The example below is a basic `Dockerfile` setup (yours might be different).
 
 ```docker
 # syntax=docker/dockerfile:1
