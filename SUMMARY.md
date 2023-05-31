@@ -10,6 +10,7 @@
   * [🌏 GitHub CI/CD](e2e-testing/running-from-github-ci-cd.md)
   * [🧑🚀 GitLab CI/CD](e2e-testing/running-from-gitlab-ci-cd.md)
   * [Learn more!!](e2e-testing/learn-more.md)
+* [⛓ Networks](networks.md)
 * [⚙ Environment Variables](environment-variables.md)
 * [💻 Synpress CLI](synpress-cli.md)
 * [🗝 Synpress API](synpress-api.md)
