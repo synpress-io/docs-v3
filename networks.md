@@ -6,6 +6,12 @@ description: Adding/switching networks to Metamask in Cypress and Playwright.
 
 Synpress gives you the ability to[ add a new network to Metamask](synpress-api.md#add-metamask-network) and [switches between different networks](synpress-api.md#change-metamask-network).
 
+
+
+TODO: adding/switching networks will be updated after merking this PR&#x20;
+
+{% embed url="https://github.com/Synthetixio/synpress/pull/770" %}
+
 ## Supported Networks
 
 By default, Synpress supports testing on the following Networks:\

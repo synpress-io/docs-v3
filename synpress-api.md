@@ -1747,6 +1747,10 @@ await expect(walletAddr).to.be.eq("0x...");
 
 Load the MetaMask extension and go through the setup process.
 
+TODO: adding/switching networks will be updated after merking this PR&#x20;
+
+{% embed url="https://github.com/Synthetixio/synpress/pull/770" %}
+
 {% tabs %}
 {% tab title="Cypress" %}
 #### `setupMetamask`
