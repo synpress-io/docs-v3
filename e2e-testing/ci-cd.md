@@ -106,7 +106,7 @@ docker-compose.yml example
 
 ### 3. Run From CI/CD&#x20;
 
-Once you created a docker container (using [docker-compose](running-from-github-ci-cd.md#2.-create-docker-compose.yml)), you should be able to run Synpress E2E tests from **any CI/CD Pipeline**. Below, there are 2 examples of **how to run Synpress from GitHub Workflow and from GitLab CI/CD**.&#x20;
+Once you created a docker container (using [docker-compose](ci-cd.md#2.-create-docker-compose.yml)), you should be able to run Synpress E2E tests from **any CI/CD Pipeline**. Below, there are 2 examples of **how to run Synpress from GitHub Workflow and from GitLab CI/CD**.&#x20;
 
 
 

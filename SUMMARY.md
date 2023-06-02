@@ -7,7 +7,7 @@
 * [E2E Testing](e2e-testing/README.md)
   * [🌙 Using with Cypress](e2e-testing/using-with-cypress.md)
   * [🪐 Using with Playwright](e2e-testing/using-with-playwright.md)
-  * [🧑🚀 CI/CD Pipeline](e2e-testing/running-from-github-ci-cd.md)
+  * [🧑🚀 CI/CD Pipeline](e2e-testing/ci-cd.md)
   * [Learn more!!](e2e-testing/learn-more.md)
 * [⛓ Networks](networks.md)
 * [⚙ Environment Variables](environment-variables.md)
