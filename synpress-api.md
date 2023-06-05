@@ -1747,6 +1747,8 @@ await expect(walletAddr).to.be.eq("0x...");
 
 Load the MetaMask extension and go through the setup process.
 
+Note: you will need to have the `SKIP_METAMASK_SETUP` environment variable set to `true` to be able to use this API. [Read this guide to know more](environment-variables.md#skip\_metamask\_setup).
+
 TODO: adding/switching networks will be updated after merking this PR&#x20;
 
 {% embed url="https://github.com/Synthetixio/synpress/pull/770" %}

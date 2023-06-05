@@ -95,3 +95,11 @@ test('add and switch to matic network in wallet', async ({ page }) => {
     await metamask.changeNetwork('Polygon');
 }
 ```
+
+
+
+## See Also &#x20;
+
+1. [Environment variables for MetaMask setup](environment-variables.md#environment-variables-for-metamask-setup)
+2. [Add MetaMask network](synpress-api.md#add-metamask-network)
+3. [Change MetaMask Network](synpress-api.md#change-metamask-network)&#x20;
