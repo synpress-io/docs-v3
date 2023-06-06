@@ -13,3 +13,4 @@
 * [⚙ Environment Variables](environment-variables.md)
 * [💻 Synpress CLI](synpress-cli.md)
 * [🗝 Synpress API](synpress-api.md)
+* [⚡ Configuration](configuration.md)
