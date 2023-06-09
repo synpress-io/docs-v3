@@ -2,7 +2,7 @@
 description: >-
   Synpress can be used as a Cypress plugin. You can continue to write your
   regular Cypress logic but will need Synpress when you are interacting with
-  Metamask.
+  MetaMask.
 coverY: 0
 ---
 

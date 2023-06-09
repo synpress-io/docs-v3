@@ -1,195 +1,205 @@
 ---
+description: >-
+  Synpress can be used as a Playwright plugin. You can continue to write your
+  regular Playwright logic but will need Synpress when you are interacting with
+  MetaMask.
 coverY: 0
 ---
 
 # 🪐 Using with Playwright
 
-### Clone Example
+[Synpress](https://github.com/Synthetixio/synpress) can be used as a plugin for [Playwright](https://playwright.dev/). In this tutorial, we will look into **how to set up Playwright and Synpress and write our first E2E test**.&#x20;
 
-```
-git clone https://github.com/drptbl/synpress-examples.git
-```
+## Prerequisites
 
-* [isolated-state](https://github.com/drptbl/synpress-examples/tree/master/playwright/isolated-state) => example setup of Playwright with synpress using isolated state meaning that each test is run in a separate browser context with fresh instance of metamask extension. Test isolation is preferred way of running tests, but it takes more time for setting up metamask extension before each test.
-* [shared-state](https://github.com/drptbl/synpress-examples/tree/master/playwright/shared-state) => example setup of Playwright with synpress using shared state meaning that each test is run in same browser context and share same instance of metamask extension.
-* [eslint](https://github.com/drptbl/synpress-examples/tree/master/playwright/eslint) => example setup of Playwright with synpress and eslint using isolated state.
+1. [General knowledge of the notion of E2E testing](https://katalon.com/resources-center/blog/end-to-end-e2e-testing)
+2. Basic knowledge in Playwright  —  [Getting Started With Playwright](https://playwright.dev/docs/intro)
 
-```
-cd synpress-examples/playwright/isolated-state
-```
+## Synpress & Playwright&#x20;
 
-### Install&#x20;
+### [Install Synpress ](../getting-starting/installing-synpress.md)& Playwright
 
-```
-yarn install
+Add Synpress to your project dependencies.&#x20;
+
+```bash
+yarn add -D @synthetixio/synpress @playwright/test
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-23 110303.jpg" alt=""><figcaption></figcaption></figure>
+### Add Playwright Config File&#x20;
 
-### Write Test file
+Because we will use Synpress with Playwright, you will need to have `playwright.config.ts` file (It is a Playwright-specific file). You can find all the available options in the [Playwright Test Configuration Guide](https://playwright.dev/docs/test-configuration).&#x20;
 
-All test file available at `tests/pages` folder
+```typescript
+// playwright.config.ts
+import { defineConfig } from "@playwright/test";
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-23 110445.jpg" alt=""><figcaption></figcaption></figure>
+export default defineConfig({
+  testDir: "./tests",
+  timeout: 30 * 1000,
+  expect: {
+    timeout: 5000,
+  },
+  fullyParallel: true,
+  retries: 0,
+  workers: 1,
+  reporter: "html",
+  outputDir: "test-results",
+});
+```
 
-Take a look at the following example to see how to write a test.
+### Install & Setup MetaMask&#x20;
 
-```javascript
-import { test, expect } from "../../fixtures";
+Create a file and name it `fixtures.js`. The goal of this file:&#x20;
+
+1. Create shared test context (multiple pages opened at the same time)&#x20;
+2. Overwrite Playwright `test` and `expect`&#x20;
+3. Install & Setup MetaMask&#x20;
+
+All this is achieved using the code snippet provided below.&#x20;
+
+```typescript
+// fixtures.js
+import { test as base, chromium, type BrowserContext } from "@playwright/test";
+import { initialSetup } from "@synthetixio/synpress/commands/metamask";
+import { prepareMetamask } from "@synthetixio/synpress/helpers";
+
+export const test = base.extend<{
+  context: BrowserContext;
+}>({
+  context: async ({}, use) => {
+    // Required for synpress
+    global.expect = expect;
+    // Download metamask
+    const metamaskPath = await prepareMetamask(
+      process.env.METAMASK_VERSION || "10.25.0"
+    );
+    
+    // Prepare browser args
+    const browserArgs = [
+      `--disable-extensions-except=${metamaskPath}`,
+      `--load-extension=${metamaskPath}`,
+      "--remote-debugging-port=9222",
+    ];
+    
+    if (process.env.CI) {
+      browserArgs.push("--disable-gpu");
+    }
+    
+    if (process.env.HEADLESS_MODE) {
+      browserArgs.push("--headless=new");
+    }
+    // launch browser
+    const context = await chromium.launchPersistentContext("", {
+      headless: false,
+      args: browserArgs,
+    });
+    // Wait for Metamask window to be shown.
+    await context.pages()[0].waitForTimeout(3000);
+    // Setup metamask
+    await initialSetup(chromium, {
+      secretWordsOrPrivateKey:
+        "test test test test test test test test test test test junk",
+      network: "sepolia",
+      password: "Tester@1234",
+      enableAdvancedSettings: true,
+    });
+    await use(context);
+  },
+});
+
+export const expect = test.expect;
+
+```
+
+#### Examples
+
+{% embed url="https://github.com/neuodev/synpress-demo/blob/main/pw-fixtures.ts" %}
+Example on how to run Synpress with Playwright
+{% endembed %}
+
+Note how we are defining which wallet & network should be used to run the tests. Take a look at [MetaMask Setup API](../synpress-api.md#setup-metamask) for more info.  &#x20;
+
+<pre class="language-typescript"><code class="lang-typescript">// Setup metamask
+<strong>await initialSetup(chromium, {
+</strong>  secretWordsOrPrivateKey: "test test test test test test test test test test test junk",
+  network: "sepolia",
+  password: "Tester@1234",
+  enableAdvancedSettings: true,
+});
+</code></pre>
+
+### Write your first E2E test!!
+
+All tests will be included in the `tests/` directory. You can still write regular Playwright logic and use the [Synpress MetaMask API](../synpress-api.md) when needed. Like in the example below :point\_down:
+
+
+
+```typescript
+// tests/example.test.js
+import { test, expect } from "../fixtures";
 import * as metamask from "@synthetixio/synpress/commands/metamask";
 
+let sharedPage;
 
-test.beforeEach(async ({ page }) => {
-  await page.goto('https://metamask.github.io/test-dapp');
+test.describe.configure({ mode: "serial" });
+
+test.beforeAll(async ({ page }) => {
+  sharedPage = page;
+  // dApp URL 
+  // Note: dApp should be running in the background
+  page.goto("http://localhost:8080");
 });
 
-test.describe('connect wallet spec', () => {
-
-  test.only('connect wallet', async ({ page }) => {
-    // Navigate to sign-in page
-    await page.getByRole('button', { name: 'Connect' }).click();
-    await metamask.acceptAccess();
-    const account = await page.getByText('Accounts:');
-    await expect(account).toContainText("0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266");
-  });
-
-});
-```
-
-### Navigation
-
-Most of the tests will start with navigating page to the URL. After that, test will be able to interact with the page elements.
-
-```
-await page.goto('https://metamask.github.io/test-dapp');
-```
-
-Synpress will wait for page to reach the load state prior to moving forward.
-
-### Query for an element <a href="#step-2-query-for-an-element" id="step-2-query-for-an-element"></a>
-
-Performing actions starts with locating the elements. To get one or more DOM elements by selector or alias, we'll use page.getByRole(). [Learn more about locator](https://playwright.dev/docs/api/class-locator)
-
-<pre><code><strong>await page.getByRole('button', { name: 'Connect' });
-</strong></code></pre>
-
-### Interaction with element
-
-Ok, now we want to click on the link we found. How do we do that? Add a [.click()](https://docs.cypress.io/api/commands/click) command to the end of the previous command, like so:
-
-```
-await page.getByRole('button', { name: 'Connect' }).click();
-```
-
-#### Basic actions[​](https://playwright.dev/docs/writing-tests#basic-actions) <a href="#basic-actions" id="basic-actions"></a>
-
-This is the list of the most popular Playwright actions. Note that there are many more, so make sure to check the [Locator API](https://playwright.dev/docs/api/class-locator) section to learn more about them.
-
-| Action                                                                                           | Description                             |
-| ------------------------------------------------------------------------------------------------ | --------------------------------------- |
-| [locator.check()](https://playwright.dev/docs/api/class-locator#locator-check)                   | Check the input checkbox                |
-| [locator.click()](https://playwright.dev/docs/api/class-locator#locator-click)                   | Click the element                       |
-| [locator.uncheck()](https://playwright.dev/docs/api/class-locator#locator-uncheck)               | Uncheck the input checkbox              |
-| [locator.hover()](https://playwright.dev/docs/api/class-locator#locator-hover)                   | Hover mouse over the element            |
-| [locator.fill()](https://playwright.dev/docs/api/class-locator#locator-fill)                     | Fill the form field (fast)              |
-| [locator.focus()](https://playwright.dev/docs/api/class-locator#locator-focus)                   | Focus the element                       |
-| [locator.press()](https://playwright.dev/docs/api/class-locator#locator-press)                   | Press single key                        |
-| [locator.setInputFiles()](https://playwright.dev/docs/api/class-locator#locator-set-input-files) | Pick files to upload                    |
-| [locator.selectOption()](https://playwright.dev/docs/api/class-locator#locator-select-option)    | Select option in the drop down          |
-| [locator.type()](https://playwright.dev/docs/api/class-locator#locator-type)                     | Type text character by character (slow) |
-
-### Interaction with metamask
-
-Now, after we click on the 'Connect Wallet' button, we need to interact with MetaMask. In this case, we should choose 'Accept MetaMask Access.' We can accomplish this by using the command metamask.acceptAccess().&#x20;
-
-```
-await metamask.acceptAccess();
-```
-
-You can learn more about all MetaMask interaction command at [Synpress API](../synpress-api.md)
-
-
-
-### Assertions <a href="#assertions" id="assertions"></a>
-
-Let's make an assertion to make sure wallet was connected successfully to website. We can do that by looking up the account element and use expect(value) and choose a matcher that reflects the expectation
-
-Here's what that looks like:
-
-```
-const account = await page.getByText('Accounts:');
-await expect(account).toContainText("0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266");
-```
-
-Here is the list of the most popular async assertions. Note that there are [many more](https://playwright.dev/docs/test-assertions) to get familiar with:
-
-| Assertion                                                                                                                         | Description                       |
-| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
-| [expect(locator).toBeChecked()](https://playwright.dev/docs/api/class-locatorassertions#locator-assertions-to-be-checked)         | Checkbox is checked               |
-| [expect(locator).toBeEnabled()](https://playwright.dev/docs/api/class-locatorassertions#locator-assertions-to-be-enabled)         | Control is enabled                |
-| [expect(locator).toBeVisible()](https://playwright.dev/docs/api/class-locatorassertions#locator-assertions-to-be-visible)         | Element is visible                |
-| [expect(locator).toContainText()](https://playwright.dev/docs/api/class-locatorassertions#locator-assertions-to-contain-text)     | Element contains text             |
-| [expect(locator).toHaveAttribute()](https://playwright.dev/docs/api/class-locatorassertions#locator-assertions-to-have-attribute) | Element has attribute             |
-| [expect(locator).toHaveCount()](https://playwright.dev/docs/api/class-locatorassertions#locator-assertions-to-have-count)         | List of elements has given length |
-| [expect(locator).toHaveText()](https://playwright.dev/docs/api/class-locatorassertions#locator-assertions-to-have-text)           | Element matches text              |
-| [expect(locator).toHaveValue()](https://playwright.dev/docs/api/class-locatorassertions#locator-assertions-to-have-value)         | Input element has value           |
-| [expect(page).toHaveTitle()](https://playwright.dev/docs/api/class-pageassertions#page-assertions-to-have-title)                  | Page has title                    |
-| [expect(page).toHaveURL()](https://playwright.dev/docs/api/class-pageassertions#page-assertions-to-have-url)                      | Page has URL                      |
-| [expect(page).toHaveScreenshot()](https://playwright.dev/docs/api/class-pageassertions#page-assertions-to-have-screenshot-1)      | Page has screenshot               |
-
-#### Test Isolation[​](https://playwright.dev/docs/writing-tests#test-isolation) <a href="#test-isolation" id="test-isolation"></a>
-
-Playwright Test is based on the concept of [test fixtures](https://playwright.dev/docs/test-fixtures) such as the [built in page fixture](https://playwright.dev/docs/test-fixtures#built-in-fixtures), which is passed into your test. Pages are isolated between tests due to the Browser Context, which is equivalent to a brand new browser profile, where every test gets a fresh environment, even when multiple tests run in a single Browser.
-
-tests/example.spec.ts
-
-```
-test('basic test', async ({ page }) => {
-  ...
-```
-
-#### Using Test Hooks[​](https://playwright.dev/docs/writing-tests#using-test-hooks) <a href="#using-test-hooks" id="using-test-hooks"></a>
-
-You can use various [test hooks](https://playwright.dev/docs/api/class-test) such as `test.describe` to declare a group of tests and `test.beforeEach` and `test.afterEach` which are executed before/after each test. Other hooks include the `test.beforeAll` and `test.afterAll` which are executed once per worker before/after all tests.
-
-tests/example.spec.ts
-
-```javascript
-import { test, expect } from "../../fixtures";
-import * as metamask from "@synthetixio/synpress/commands/metamask";
-
-
-test.beforeEach(async ({ page }) => {
-  await page.goto('https://metamask.github.io/test-dapp');
+test.afterAll(async ({ context }) => {
+  await context.close();
 });
 
-test.describe('connect wallet spec', () => {
+test("should connect to MetaMask and display wallet address", async () => {
+  await expect(sharedPage.locator("#address")).toHaveText("Address: ??");
+  await expect(sharedPage.locator("#connected")).toHaveText("Connected: NO");
 
-  test.only('connect wallet', async ({ page }) => {
-    // Navigate to sign-in page
-    await page.getByRole('button', { name: 'Connect' }).click();
-    await metamask.acceptAccess();
-    const account = await page.getByText('Accounts:');
-    await expect(account).toContainText("0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266");
-  });
+  await sharedPage.locator("#connect-btn").click();
+  // Use MetaMask API provided by Synpress 
+  await metamask.acceptAccess();
 
+  await expect(sharedPage.locator("#address")).toHaveText(
+    "Address: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+  );
+  await expect(sharedPage.locator("#connected")).toHaveText("Connected: YES");
+
+  sharedPage.locator("#disconnect-btn").click();
+  await expect(sharedPage.locator("#address")).toHaveText("Address: ??");
+  await expect(sharedPage.locator("#connected")).toHaveText("Connected: NO");
 });
-```
-
-### Run test
 
 ```
-yarn test
+
+Take a look at [**Synpress MetaMask API**](../synpress-api.md) to get to know all the available functionalities and how to use them. &#x20;
+
+### Update `package.json`
+
+```json5
+"test:pw": "playwright test --browser chromium",
+"test:e2e:pw": "start-server-and-test 'yarn start' http://localhost:8080 'yarn test:pw'"
 ```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-23 111622.jpg" alt=""><figcaption></figcaption></figure>
+the `test:pw` script will run the tests but you will need to have the dApp running in the background (from another terminal for example).&#x20;
 
-### Report&#x20;
+Another way to do it is to use the [start-server-and-test](https://www.npmjs.com/package/start-server-and-test) package which will run the dApp and lunch the tests from the same terminal and will close the server once the tests are done.&#x20;
 
-After all test files have run, you will be able to see a test report that contains all the steps and results. You can also using command
+{% embed url="https://www.npmjs.com/package/start-server-and-test" %}
+Starts server, waits for URL, then runs test command; when the tests end, shuts down server
+{% endembed %}
 
-```
-npx playwright show-report
-```
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-05-25 113001.jpg" alt=""><figcaption></figcaption></figure>
+
+I created [Synpress & Playwright demo](https://github.com/neuodev/synpress-demo/) on GitHub. It has all the essentials to run use Synpress with Playwright.&#x20;
+
+{% embed url="https://github.com/neuodev/synpress-demo/" %}
+Synpress & Playwright Demo
+{% endembed %}
+
+If you had successfully setup Synptess & Playwright, you should be able to see something like this&#x20;
+
+<figure><img src="../.gitbook/assets/ezgif.com-video-to-gif (1).gif" alt=""><figcaption></figcaption></figure>
+
